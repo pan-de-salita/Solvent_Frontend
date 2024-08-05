@@ -6,11 +6,17 @@ import { Link, RouterProvider } from "react-router-dom";
 import Login, { action as loginAction } from "./pages/Login";
 import { AuthProvider } from "./contexts/AuthContext";
 import { Dashboard } from "./pages/Dashboard";
+import Signup, { action as signupAction } from "./pages/Signup";
 
 const { router } = typesafeBrowserRouter([
   {
     path: "/",
     element: <Link to={`/login`}>click me</Link>,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+    action: signupAction,
   },
   {
     path: "/login",

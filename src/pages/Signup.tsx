@@ -6,13 +6,24 @@ import {
   useNavigation,
 } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faVial, faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
+import {
+  faVial,
+  faEnvelope,
+  faKey,
+  faUser,
+  faCircleCheck,
+} from "@fortawesome/free-solid-svg-icons";
 import { RiseLoader } from "react-spinners";
 
-async function login(credentials: { email: string; password: string }) {
+async function signup(credentials: {
+  username: string;
+  email: string;
+  password: string;
+  password_confirmation: string;
+}) {
   try {
     const response = await fetch(
-      "https://solvent-nfkw.onrender.com/api/v1/login",
+      "https://solvent-nfkw.onrender.com/api/v1/signup",
       {
         method: "POST",
         body: JSON.stringify({ user: credentials }),
@@ -22,14 +33,12 @@ async function login(credentials: { email: string; password: string }) {
       },
     );
 
+    console.log(response);
+    console.log(response.ok);
     if (!response.ok) {
-      return redirect("/login");
+      return redirect("/signup");
     } else {
-      const authToken = response.headers.get("Authorization");
-      if (authToken) {
-        localStorage.setItem("Authorization", JSON.stringify(authToken));
-        return redirect("/dashboard");
-      }
+      return redirect("/login");
     }
   } catch (error) {
     return error as Error;
@@ -39,13 +48,15 @@ async function login(credentials: { email: string; password: string }) {
 export async function action({ request }: { request: Request }) {
   const formData = await request.formData();
   const credentials = Object.fromEntries(formData) as {
+    username: string;
     email: string;
     password: string;
+    password_confirmation: string;
   };
-  return await login(credentials);
+  return await signup(credentials);
 }
 
-export default function Login() {
+export default function Signup() {
   const navigation = useNavigation();
 
   if (localStorage.getItem("Authorization")) {
@@ -56,7 +67,7 @@ export default function Login() {
       <div className="flex h-screen w-screen flex-col items-center bg-gray-500">
         <Form
           method="post"
-          className="mt-16 flex w-[20rem] flex-col items-center justify-center gap-4 rounded-lg bg-gray-400 px-6 py-8 md:min-w-[25rem]"
+          className="mt-16 flex w-[20rem] flex-col items-center justify-center gap-4 rounded-lg bg-gray-400 px-6 py-8 md:min-w-[30rem]"
         >
           <div className="mb-2 flex items-center justify-center gap-2 text-gray-100">
             <span className="logo text-4xl">solvent</span>
@@ -66,6 +77,18 @@ export default function Login() {
             />
           </div>
           <div className="flex w-full flex-col gap-4">
+            <div className="flex items-center rounded-lg border-[1px] border-gray-200 bg-gray-300">
+              <FontAwesomeIcon icon={faUser} className="pl-3 text-gray-200" />
+              <input
+                placeholder="username"
+                type="text"
+                name="username"
+                className="w-[85%] bg-gray-300 p-2 text-sm text-gray-100 placeholder-gray-200 outline-none"
+                disabled={navigation.state == "submitting" ? true : false}
+                autoComplete="off"
+              />
+            </div>
+
             <div className="flex items-center rounded-lg border-[1px] border-gray-200 bg-gray-300">
               <FontAwesomeIcon
                 icon={faEnvelope}
@@ -91,6 +114,24 @@ export default function Login() {
                 autoComplete="off"
               />
             </div>
+            <div className="flex items-center rounded-lg border-[1px] border-gray-200 bg-gray-300">
+              <FontAwesomeIcon
+                icon={faCircleCheck}
+                className="pl-3 text-gray-200"
+              />
+              <input
+                placeholder="password confirmation"
+                type="password"
+                name="password_confirmation"
+                className="w-[85%] bg-gray-300 p-2 text-sm text-gray-100 placeholder-gray-200 outline-none"
+                disabled={navigation.state == "submitting" ? true : false}
+                autoComplete="off"
+              />
+            </div>
+            <span className="pt-2 text-center text-xs text-gray-200">
+              By creating an account, you agree to our{" "}
+              <span className="font-bold">Privacy Policy</span>
+            </span>
             <button
               type="submit"
               className="mt-2 w-full self-center rounded-lg bg-red-500 p-2 text-sm text-gray-100"
@@ -98,15 +139,15 @@ export default function Login() {
               {navigation.state == "submitting" ? (
                 <RiseLoader color="#EFEFEF" size={5} />
               ) : (
-                "LOG IN"
+                "SIGN UP"
               )}
             </button>
           </div>
           <span className="text-xs text-gray-100">
             <Link to="#" className="underline">
-              Sign up
+              Log in
             </Link>{" "}
-            if you don't have an account yet.
+            if you already have an account.
           </span>
         </Form>
       </div>
