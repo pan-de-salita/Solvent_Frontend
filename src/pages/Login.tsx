@@ -28,7 +28,7 @@ async function login(credentials: { email: string; password: string }) {
 
     const authToken = response.headers.get("Authorization");
     if (authToken) {
-      localStorage.setItem("Authorization", JSON.parse(authToken));
+      localStorage.setItem("Authorization", JSON.stringify(authToken));
       return redirect("/dashboard");
     }
   } catch (error) {
