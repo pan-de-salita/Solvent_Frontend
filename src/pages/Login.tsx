@@ -6,7 +6,7 @@ import {
   useNavigation,
 } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faVial } from "@fortawesome/free-solid-svg-icons";
+import { faVial, faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import { RiseLoader } from "react-spinners";
 
 async function login(credentials: { email: string; password: string }) {
@@ -67,20 +67,29 @@ export default function Login() {
             />
           </div>
           <div className="flex w-full flex-col gap-4">
-            <input
-              placeholder="email"
-              type="text"
-              name="email"
-              className="rounded-lg border-[1px] border-gray-200 bg-gray-300 p-2 text-sm text-gray-100 placeholder-gray-200"
-              disabled={navigation.state == "submitting" ? true : false}
-            />
-            <input
-              placeholder="password"
-              type="password"
-              name="password"
-              className="rounded-lg border-[1px] border-gray-200 bg-gray-300 p-2 text-sm text-gray-100 placeholder-gray-200"
-              disabled={navigation.state == "submitting" ? true : false}
-            />
+            <div className="flex items-center rounded-lg border-[1px] border-gray-200 bg-gray-300">
+              <FontAwesomeIcon
+                icon={faEnvelope}
+                className="pl-3 text-gray-200"
+              />
+              <input
+                placeholder="email"
+                type="text"
+                name="email"
+                className="bg-gray-300 p-2 text-sm text-gray-100 placeholder-gray-200 outline-none"
+                disabled={navigation.state == "submitting" ? true : false}
+              />
+            </div>
+            <div className="flex items-center rounded-lg border-[1px] border-gray-200 bg-gray-300">
+              <FontAwesomeIcon icon={faKey} className="pl-3 text-gray-200" />
+              <input
+                placeholder="password"
+                type="password"
+                name="password"
+                className="bg-gray-300 p-2 text-sm text-gray-100 placeholder-gray-200 outline-none"
+                disabled={navigation.state == "submitting" ? true : false}
+              />
+            </div>
             <button
               type="submit"
               className="mt-2 w-full self-center rounded-lg bg-red-500 p-2 text-sm text-gray-100"
