@@ -4,6 +4,8 @@ import "./index.css";
 import { typesafeBrowserRouter } from "react-router-typesafe";
 import { Link, RouterProvider } from "react-router-dom";
 import Login, { action as loginAction } from "./pages/Login";
+import { AuthProvider } from "./contexts/AuthContext";
+import { Dashboard } from "./pages/Dashboard";
 
 const { router } = typesafeBrowserRouter([
   {
@@ -14,6 +16,14 @@ const { router } = typesafeBrowserRouter([
     path: "/login",
     element: <Login />,
     action: loginAction,
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <AuthProvider>
+        <Dashboard />
+      </AuthProvider>
+    ),
   },
 ]);
 
