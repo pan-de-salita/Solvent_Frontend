@@ -78,6 +78,7 @@ export default function Login() {
                 name="email"
                 className="bg-gray-300 p-2 text-sm text-gray-100 placeholder-gray-200 outline-none"
                 disabled={navigation.state == "submitting" ? true : false}
+                autoComplete="off"
               />
             </div>
             <div className="flex items-center rounded-lg border-[1px] border-gray-200 bg-gray-300">
@@ -88,6 +89,7 @@ export default function Login() {
                 name="password"
                 className="bg-gray-300 p-2 text-sm text-gray-100 placeholder-gray-200 outline-none"
                 disabled={navigation.state == "submitting" ? true : false}
+                autoComplete="off"
               />
             </div>
             <button
