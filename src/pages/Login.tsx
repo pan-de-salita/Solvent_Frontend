@@ -56,7 +56,7 @@ export default function Login() {
     <>
       <div className="flex h-screen w-screen flex-col items-center bg-gray-500">
         <Form
-          method="POST"
+          method="post"
           className="mt-16 flex min-w-[20rem] max-w-[50rem] flex-col items-center justify-center gap-4 rounded-lg bg-gray-400 px-6 py-8"
         >
           <div className="mb-2 flex items-center justify-center gap-2 text-gray-100">
