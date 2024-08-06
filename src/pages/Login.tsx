@@ -8,6 +8,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVial, faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import { RiseLoader } from "react-spinners";
+import { useAuth } from "../contexts/AuthContext";
 
 async function login(credentials: { email: string; password: string }) {
   try {
@@ -24,12 +25,12 @@ async function login(credentials: { email: string; password: string }) {
 
     if (!response.ok) {
       return redirect("/login");
-    } else {
-      const authToken = response.headers.get("Authorization");
-      if (authToken) {
-        localStorage.setItem("Authorization", JSON.stringify(authToken));
-        return redirect("/dashboard");
-      }
+    }
+
+    const authToken = response.headers.get("Authorization");
+    if (authToken) {
+      localStorage.setItem("Authorization", JSON.stringify(authToken));
+      return redirect("/dashboard");
     }
   } catch (error) {
     return error as Error;
@@ -47,10 +48,12 @@ export async function action({ request }: { request: Request }) {
 
 export default function Login() {
   const navigation = useNavigation();
+  const { isAuthorized } = useAuth();
 
-  if (localStorage.getItem("Authorization")) {
+  if (isAuthorized()) {
     return <Navigate to="/dashboard" replace={true} />;
   }
+
   return (
     <>
       <div className="flex h-screen w-screen flex-col items-center bg-gray-500">
@@ -103,7 +106,7 @@ export default function Login() {
             </button>
           </div>
           <span className="text-xs text-gray-100">
-            <Link to="#" className="underline">
+            <Link to="/signup" className="underline">
               Sign up
             </Link>{" "}
             if you don't have an account yet.

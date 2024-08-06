@@ -1,13 +1,17 @@
 import { createContext, useContext } from "react";
-import { Navigate } from "react-router-dom";
 
 interface AuthContextType {
+  isAuthorized: () => boolean;
   logout: () => Promise<Error | undefined>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
+  function isAuthorized(): boolean {
+    return !!localStorage.getItem("Authorization");
+  }
+
   async function logout() {
     try {
       const authToken = localStorage.getItem("Authorization");
@@ -33,12 +37,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <AuthContext.Provider value={{ logout }}>
-      {localStorage.getItem("Authorization") ? (
-        children
-      ) : (
-        <Navigate to="/login" replace={true} />
-      )}
+    <AuthContext.Provider value={{ isAuthorized, logout }}>
+      {children}
     </AuthContext.Provider>
   );
 }

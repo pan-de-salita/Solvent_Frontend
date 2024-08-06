@@ -14,6 +14,7 @@ import {
   faCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { RiseLoader } from "react-spinners";
+import { useAuth } from "../contexts/AuthContext";
 
 async function signup(credentials: {
   username: string;
@@ -33,13 +34,7 @@ async function signup(credentials: {
       },
     );
 
-    console.log(response);
-    console.log(response.ok);
-    if (!response.ok) {
-      return redirect("/signup");
-    } else {
-      return redirect("/login");
-    }
+    return !response.ok ? redirect("/signup") : redirect("/login");
   } catch (error) {
     return error as Error;
   }
@@ -58,10 +53,12 @@ export async function action({ request }: { request: Request }) {
 
 export default function Signup() {
   const navigation = useNavigation();
+  const { isAuthorized } = useAuth();
 
-  if (localStorage.getItem("Authorization")) {
+  if (isAuthorized()) {
     return <Navigate to="/dashboard" replace={true} />;
   }
+
   return (
     <>
       <div className="flex h-screen w-screen flex-col items-center bg-gray-500">
@@ -144,7 +141,7 @@ export default function Signup() {
             </button>
           </div>
           <span className="text-xs text-gray-100">
-            <Link to="#" className="underline">
+            <Link to="/login" className="underline">
               Log in
             </Link>{" "}
             if you already have an account.

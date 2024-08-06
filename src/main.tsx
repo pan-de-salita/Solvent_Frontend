@@ -4,9 +4,10 @@ import "./index.css";
 import { typesafeBrowserRouter } from "react-router-typesafe";
 import { Link, RouterProvider } from "react-router-dom";
 import Login, { action as loginAction } from "./pages/Login";
-import { AuthProvider } from "./contexts/AuthContext";
-import { Dashboard } from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard";
 import Signup, { action as signupAction } from "./pages/Signup";
+import UserLayout, { loader as dashboardLoader } from "./layouts/UserLayout";
+import { AuthProvider } from "./contexts/AuthContext";
 
 const { router } = typesafeBrowserRouter([
   {
@@ -15,21 +16,36 @@ const { router } = typesafeBrowserRouter([
   },
   {
     path: "/signup",
-    element: <Signup />,
+    element: (
+      <AuthProvider>
+        <Signup />
+      </AuthProvider>
+    ),
     action: signupAction,
   },
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <AuthProvider>
+        <Login />
+      </AuthProvider>
+    ),
     action: loginAction,
   },
   {
     path: "/dashboard",
     element: (
       <AuthProvider>
-        <Dashboard />
+        <UserLayout />
       </AuthProvider>
     ),
+    loader: dashboardLoader,
+    children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+    ],
   },
 ]);
 
