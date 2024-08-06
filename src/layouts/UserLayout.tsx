@@ -1,7 +1,6 @@
 import { Navigate, Outlet, redirect, useLoaderData } from "react-router-dom";
 import { User } from "../types/user";
 import { useAuth } from "../contexts/AuthContext";
-import { useEffect } from "react";
 
 async function getCurrentUser(authToken: string) {
   try {
