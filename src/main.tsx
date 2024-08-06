@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Signup, { action as signupAction } from "./pages/Signup";
 import UserLayout, { loader as dashboardLoader } from "./layouts/UserLayout";
 import { AuthProvider } from "./contexts/AuthContext";
+import { action as logoutAction } from "./pages/Logout";
 
 const { router } = typesafeBrowserRouter([
   {
@@ -44,6 +45,10 @@ const { router } = typesafeBrowserRouter([
       {
         index: true,
         element: <Dashboard />,
+      },
+      {
+        path: "/dashboard/logout",
+        action: logoutAction,
       },
     ],
   },

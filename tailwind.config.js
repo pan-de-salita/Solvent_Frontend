@@ -12,6 +12,7 @@ export default {
           500: "#16171B",
           600: "#111114",
           700: "#0A0A0A",
+          800: "#121216",
         },
         red: {
           500: "#CF4B32",
@@ -19,5 +20,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };

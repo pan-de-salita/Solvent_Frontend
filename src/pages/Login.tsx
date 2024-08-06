@@ -59,14 +59,14 @@ export default function Login() {
       <div className="flex h-screen w-screen flex-col items-center bg-gray-500">
         <Form
           method="post"
-          className="mt-16 flex w-[20rem] flex-col items-center justify-center gap-4 rounded-lg bg-gray-400 px-6 py-8 md:min-w-[25rem]"
+          className="mt-16 flex w-[20rem] flex-col items-center justify-center gap-4 rounded-lg bg-gray-400 px-6 py-8 md:min-w-[22rem]"
         >
           <div className="mb-2 flex items-center justify-center gap-2 text-gray-100">
-            <span className="logo text-4xl">solvent</span>
             <FontAwesomeIcon
               icon={faVial}
               className="rounded-md border-2 border-gray-100 p-1 text-lg"
             />
+            <span className="logo text-4xl">solvent</span>
           </div>
           <div className="flex w-full flex-col gap-4">
             <div className="flex items-center rounded-lg border-[1px] border-gray-200 bg-gray-300">
