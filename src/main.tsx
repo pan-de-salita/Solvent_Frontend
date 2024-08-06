@@ -9,6 +9,7 @@ import Signup, { action as signupAction } from "./pages/Signup";
 import UserLayout, { loader as dashboardLoader } from "./layouts/UserLayout";
 import { AuthProvider } from "./contexts/AuthContext";
 import { action as logoutAction } from "./pages/Logout";
+import Stats from "./pages/Stats";
 
 const { router } = typesafeBrowserRouter([
   {
@@ -16,7 +17,7 @@ const { router } = typesafeBrowserRouter([
     element: <Link to={`/login`}>click me</Link>,
   },
   {
-    path: "/signup",
+    path: "signup",
     element: (
       <AuthProvider>
         <Signup />
@@ -25,7 +26,7 @@ const { router } = typesafeBrowserRouter([
     action: signupAction,
   },
   {
-    path: "/login",
+    path: "login",
     element: (
       <AuthProvider>
         <Login />
@@ -34,7 +35,7 @@ const { router } = typesafeBrowserRouter([
     action: loginAction,
   },
   {
-    path: "/dashboard",
+    path: "dashboard",
     element: (
       <AuthProvider>
         <UserLayout />
@@ -43,11 +44,17 @@ const { router } = typesafeBrowserRouter([
     loader: dashboardLoader,
     children: [
       {
-        index: true,
+        path: "stats",
         element: <Dashboard />,
+        children: [
+          {
+            index: true,
+            element: <Stats />,
+          },
+        ],
       },
       {
-        path: "/dashboard/logout",
+        path: "logout",
         action: logoutAction,
       },
     ],

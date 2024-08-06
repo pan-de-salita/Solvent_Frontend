@@ -30,7 +30,7 @@ async function login(credentials: { email: string; password: string }) {
     const authToken = response.headers.get("Authorization");
     if (authToken) {
       localStorage.setItem("Authorization", JSON.stringify(authToken));
-      return redirect("/dashboard");
+      return redirect("/dashboard/stats");
     }
   } catch (error) {
     return error as Error;
@@ -51,7 +51,7 @@ export default function Login() {
   const { isAuthorized } = useAuth();
 
   if (isAuthorized()) {
-    return <Navigate to="/dashboard" replace={true} />;
+    return <Navigate to="/dashboard/stats" replace={true} />;
   }
 
   return (
@@ -59,7 +59,7 @@ export default function Login() {
       <div className="flex h-screen w-screen flex-col items-center bg-gray-500">
         <Form
           method="post"
-          className="mt-16 flex w-[20rem] flex-col items-center justify-center gap-4 rounded-lg bg-gray-400 px-6 py-8 md:min-w-[22rem]"
+          className="mt-16 flex w-[20rem] flex-col items-center justify-center gap-4 rounded-lg bg-gray-400 px-6 py-8 md:min-w-[22rem] shadow-sm"
         >
           <div className="mb-2 flex items-center justify-center gap-2 text-gray-100">
             <FontAwesomeIcon

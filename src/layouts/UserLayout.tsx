@@ -80,30 +80,34 @@ export default function UserLayout() {
                 </svg>
               </label>
             </div>
-            <div className="flex items-center justify-center gap-2 text-gray-100">
+            <div className="flex items-center justify-center gap-1 text-red-400">
               <FontAwesomeIcon
                 icon={faVial}
-                className="rounded-md border-2 border-gray-100 p-1 text-xs"
+                className="hidden md:block rounded-md border-2 border-red-400 p-1 text-xs"
               />
               <span className="logo text-2xl">solvent</span>
-              <span className="pt-1 logo text-md text-gray-200">1.2.0</span>
+              <span className="pl-1 pt-1 logo text-lg text-gray-200">
+                v1.2.0
+              </span>
             </div>
           </div>
           <div>
-            <span className="logo px-4 hidden md:inline">
+            <span className="logo pr-2 hidden md:inline text-gray-100">
               What's cooking, {data.current_user.username}?
             </span>
-            <div className="dropdown dropdown-end pr-6">
-              <img
-                alt={data.current_user.username}
-                src={blo(data.current_user.username as `0x${string}`)}
-                className="w-8 h-8"
-                role="button"
-                tabIndex={0}
-              />
+            <div className="dropdown dropdown-end h-full">
+              <div className="rounded-lg mr-4 p-3 h-full btn-ghost">
+                <img
+                  alt={data.current_user.username}
+                  src={blo(data.current_user.username as `0x${string}`)}
+                  className="w-8 h-8 rounded-full"
+                  role="button"
+                  tabIndex={0}
+                />
+              </div>
               <ul
                 tabIndex={0}
-                className="rounded-lg dropdown-content menu bg-gray-800 z-[1] w-40 p-2 shadow border-[1px] border-gray-200 mt-2"
+                className="rounded-lg dropdown-content menu bg-gray-800 z-[1] w-40 p-2 shadow border-[1px] border-gray-200"
               >
                 <Form
                   method="delete"
@@ -134,7 +138,10 @@ export default function UserLayout() {
         <ul className="menu bg-gray-800 min-h-full w-80 p-4">
           {/* Sidebar content here */}
           <li>
-            <Link to="#" className="flex justify-start items-center">
+            <Link
+              to="/dashboard/stats"
+              className="flex justify-start items-center"
+            >
               <FontAwesomeIcon icon={faAtom} className="text-3xl pr-3" />
               <div className="flex flex-col items-start">
                 <span className="text-md font-bold">Lab</span>
