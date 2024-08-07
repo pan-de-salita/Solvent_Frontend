@@ -1,4 +1,4 @@
-type Puzzle = {
+interface Puzzle {
   id: number;
   title: string;
   description: string;
@@ -7,9 +7,9 @@ type Puzzle = {
   creator_id: number;
   tags: string[];
   expected_output: string;
-};
+}
 
-type CompletedSolution = {
+interface CompletedSolution {
   id: number;
   source_code: string;
   language_id: number;
@@ -17,22 +17,22 @@ type CompletedSolution = {
   user_id: number;
   created_at: string;
   updated_at: string;
-};
+}
 
-type Language = {
+interface Language {
   id: number;
   name: string;
   created_at: string;
   updated_at: string;
   version: string;
-};
+}
 
-type UserStats = {
+interface UserStats {
   leaderboard_position: number;
   most_used_language: string | null;
-};
+}
 
-type CurrentUser = {
+interface CurrentUser {
   id: number;
   username: string;
   email: string;
@@ -48,7 +48,7 @@ type CurrentUser = {
   languages: Language[];
   created_puzzles: Puzzle[];
   stats: UserStats;
-};
+}
 
 export interface User {
   current_user: CurrentUser;

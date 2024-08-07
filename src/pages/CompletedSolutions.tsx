@@ -41,7 +41,7 @@ export default function CompletedSolutions() {
     <>
       <div className="px-4 md:px-0 w-full mx-auto flex justify-center text-gray-100">
         <div className="bg-gray-400 rounded-lg md:mx-4 p-4 w-full max-w-5xl flex shadow-sm">
-          <div className="w-[7rem] hidden md:flex flex-col gap-1">
+          <div className="min-w-[7rem] hidden md:flex flex-col gap-1">
             <h2 className="text-md">Quick facts</h2>
             <span className="text-sm">
               Solutions: {data.current_user.solutions.length}
