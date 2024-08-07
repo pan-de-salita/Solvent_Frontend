@@ -13,8 +13,8 @@ export default function Stats() {
 
   return (
     <>
-      <div className="p-4 w-full mx-auto flex justify-center text-gray-100">
-        <div className="bg-gray-400 rounded-lg mx-4 p-4 w-full max-w-5xl flex flex-col gap-8 shadow-sm">
+      <div className="px-4 md:px-0 w-full mx-auto flex justify-center text-gray-100">
+        <div className="bg-gray-400 rounded-lg md:mx-4 p-4 w-full max-w-5xl flex flex-col gap-8 shadow-sm">
           <div className="flex gap-4">
             <FontAwesomeIcon
               icon={faClipboardCheck}

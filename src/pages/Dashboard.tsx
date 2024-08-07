@@ -114,7 +114,16 @@ export default function Dashboard() {
                 </Link>
               </li>
               <li>
-                <a>Item 2</a>
+                <Link
+                  to="/dashboard/stats"
+                  className={
+                    location.pathname == "/dashboard/solutions"
+                      ? "bg-gray-300"
+                      : ""
+                  }
+                >
+                  Completed Solutions
+                </Link>
               </li>
               <li>
                 <a>Item 3</a>
