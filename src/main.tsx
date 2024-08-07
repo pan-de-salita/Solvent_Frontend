@@ -13,6 +13,9 @@ import Stats from "./pages/Stats";
 import CompletedSolutions, {
   loader as completedSolutionsLoader,
 } from "./pages/CompletedSolutions";
+import CreatedPuzzles, {
+  loader as createdPuzzlesLoader,
+} from "./pages/CreatedPuzzles";
 
 const { router } = typesafeBrowserRouter([
   {
@@ -58,6 +61,11 @@ const { router } = typesafeBrowserRouter([
             path: "completed_solutions",
             element: <CompletedSolutions />,
             loader: completedSolutionsLoader,
+          },
+          {
+            path: "created_puzzles",
+            element: <CreatedPuzzles />,
+            loader: createdPuzzlesLoader,
           },
         ],
       },

@@ -33,7 +33,7 @@ export async function loader() {
   return { langData };
 }
 
-export default function CompletedSolutions() {
+export default function CreatedPuzzles() {
   const { data } = useOutletContext() as { data: User };
   const { langData } = useLoaderData() as { langData: Language[] };
 
@@ -44,14 +44,11 @@ export default function CompletedSolutions() {
           <div className="w-[7rem] hidden md:flex flex-col gap-1">
             <h2 className="text-md">Quick facts</h2>
             <span className="text-sm">
-              Solutions: {data.current_user.solutions.length}
-            </span>
-            <span className="text-sm">
-              Puzzles: {data.current_user.solved_puzzles.length}
+              Created: {data.current_user.created_puzzles.length}
             </span>
           </div>
           <div className="divider divider-horizontal"></div>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-12">
             {Object.entries(data.current_user.solutions_by_puzzle).map(
               ([puzzleId, solutions]) => {
                 const puzzle = data.current_user.solved_puzzles.find(
@@ -76,15 +73,6 @@ export default function CompletedSolutions() {
                           <code className="text-xs whitespace-pre-wrap bg-gray-800 p-2 rounded-lg overflow-x-auto">
                             {solution.source_code}
                           </code>
-                          <span className="text-sm text-gray-200 pb-4">
-                            {new Date(solution.created_at).toLocaleDateString(
-                              "en-US",
-                              {
-                                year: "numeric",
-                                month: "short",
-                              },
-                            )}
-                          </span>
                         </div>
                       );
                     })}

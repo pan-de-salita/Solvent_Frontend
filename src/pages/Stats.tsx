@@ -103,13 +103,7 @@ export default function Stats() {
                 ]}
                 slotProps={{
                   legend: {
-                    direction: "column",
-                    position: { vertical: "top", horizontal: "right" },
-                    padding: -8,
-                    labelStyle: {
-                      fontSize: 14,
-                      fill: "#EFEFEF",
-                    },
+                    hidden: true,
                   },
                 }}
                 width={300}

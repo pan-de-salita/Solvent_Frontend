@@ -102,7 +102,7 @@ export default function Dashboard() {
         </div>
         {/* menu */}
         <div className="my-2 w-full mx-auto flex justify-center text-gray-100">
-          <div className="rounded-lg mx-4 w-full max-w-5xl flex gap-4">
+          <div className="rounded-lg mx-2 w-full max-w-5xl">
             <ul className="menu menu-horizontal rounded-box gap-2">
               <li>
                 <Link
@@ -123,11 +123,20 @@ export default function Dashboard() {
                       : ""
                   }
                 >
-                  Completed Solutions
+                  Solutions
                 </Link>
               </li>
               <li>
-                <a>Item 3</a>
+                <Link
+                  to="/dashboard/created_puzzles"
+                  className={
+                    location.pathname == "/dashboard/created_puzzles"
+                      ? "bg-gray-300"
+                      : ""
+                  }
+                >
+                  Puzzles
+                </Link>
               </li>
             </ul>
           </div>

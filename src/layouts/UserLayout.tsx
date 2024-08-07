@@ -92,9 +92,6 @@ export default function UserLayout() {
             </div>
           </div>
           <div>
-            <span className="logo pr-2 hidden md:inline text-gray-100">
-              What's cooking, {data.current_user.username}?
-            </span>
             <div className="dropdown dropdown-end h-full">
               <div className="rounded-lg mr-4 p-3 h-full btn-ghost">
                 <img
