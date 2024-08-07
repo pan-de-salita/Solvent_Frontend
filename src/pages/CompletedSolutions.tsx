@@ -1,12 +1,5 @@
 import { useOutletContext } from "react-router-dom";
 import { User } from "../types/user";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faClipboardCheck,
-  faLaptopCode,
-  faVial,
-} from "@fortawesome/free-solid-svg-icons";
-import { PieChart } from "@mui/x-charts/PieChart";
 import { useLoaderData } from "react-router-typesafe";
 
 interface Language {
