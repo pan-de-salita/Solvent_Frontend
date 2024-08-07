@@ -1,4 +1,4 @@
-type SolvedPuzzle = {
+type Puzzle = {
   id: number;
   title: string;
   description: string;
@@ -40,10 +40,13 @@ type CurrentUser = {
   updated_at: Date;
   following: number[];
   followers: number[];
-  solved_puzzles: SolvedPuzzle[];
+  solutions: CompletedSolution[];
+  solved_puzzles: Puzzle[];
+  solutions_by_puzzle: Record<number, CompletedSolution[]>;
+  solutions_by_language: Record<string, number>;
   completed_solutions: Record<string, CompletedSolution[]>;
   languages: Language[];
-  created_puzzles: SolvedPuzzle[];
+  created_puzzles: Puzzle[];
   stats: UserStats;
 };
 

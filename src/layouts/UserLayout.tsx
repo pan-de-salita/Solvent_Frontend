@@ -52,7 +52,7 @@ export default function UserLayout() {
   const { data } = useLoaderData() as { data: User };
   const { isAuthorized } = useAuth();
 
-  return isAuthorized() ? (
+  return isAuthorized() && data ? (
     <div className="drawer bg-gray-500">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">

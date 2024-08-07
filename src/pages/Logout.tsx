@@ -1,6 +1,6 @@
 import { redirect } from "react-router-dom";
 
-export async function action({ params }) {
+export async function action() {
   try {
     const authToken = localStorage.getItem("Authorization");
     if (authToken) {
@@ -15,16 +15,17 @@ export async function action({ params }) {
         },
       );
 
+      localStorage.removeItem("Authorization");
+
       const data = await response.json();
       console.log(data);
 
       if (response.ok) {
-        localStorage.removeItem("Authorization");
         return redirect("/login");
       }
     }
   } catch (error) {
     console.log(error);
-    return error as Error;
+    return redirect("/login");
   }
 }
