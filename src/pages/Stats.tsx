@@ -1,10 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import { User } from "../types/user";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faClipboardCheck,
-  faLaptopCode,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChartBar, faLaptopCode } from "@fortawesome/free-solid-svg-icons";
 import { PieChart } from "@mui/x-charts/PieChart";
 
 export default function Stats() {
@@ -13,14 +10,14 @@ export default function Stats() {
   return (
     <>
       <div className="px-4 md:px-0 w-full mx-auto flex justify-center text-gray-100">
-        <div className="bg-gray-400 rounded-lg md:mx-4 p-4 w-full max-w-5xl flex flex-col gap-8 shadow-sm">
+        <div className="bg-gray-400 rounded-lg md:mx-4 p-4 w-full max-w-5xl flex flex-col gap-4 md:gap-6 shadow-sm">
           <div className="flex gap-4">
             <FontAwesomeIcon
-              icon={faClipboardCheck}
-              className="rounded-md pl-1 text-6xl pr-2 text-red-500"
+              icon={faChartBar}
+              className="rounded-md pl-1 text-5xl pr-2 text-red-500"
             />
             <div className="w-full flex flex-col justify-start gap-2">
-              <h2 className="text-lg pb-1">Progress</h2>
+              <h2 className="text-lg pb-1">Stats</h2>
               <div className="w-full flex flex-col md:flex-row justify-between md:gap-4">
                 <div className="flex flex-col gap-1">
                   <span className="text-sm">
@@ -30,6 +27,10 @@ export default function Stats() {
                   <span className="text-sm">
                     Total Solved Puzzles:{" "}
                     {data.current_user.solved_puzzles.length}
+                  </span>
+                  <span className="text-sm">
+                    Total Completed Solutions:{" "}
+                    {data.current_user.solutions.length}
                   </span>
                   <span className="text-sm">
                     Total Authored Puzzles:{" "}
@@ -54,30 +55,33 @@ export default function Stats() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-center md:flex-row md:items-start gap-4">
+          <div className="divider"></div>
+          <div className="flex flex-col items-start md:flex-row gap-4">
             <div className="md:w-[54%] flex flex-col justify-between md:justify-start gap-2 md:pl-16">
               <div className="flex flex-col md:flex-row gap-4 h-full md:pl-2">
                 <div className="flex items-start w-full h-full">
                   <div className="flex flex-col items-start">
-                    <span className="text-lg pb-2">
+                    <span className="text-md pb-2">
                       Language-To-Solution Breakdown:
                     </span>
-                    {Object.entries(
-                      data.current_user.solutions_by_language,
-                    ).map((language) => {
-                      return (
-                        <div
-                          key={`${language[0]}`}
-                          className="badge badge-primary badge-outline"
-                        >{`${language[0]} ${language[1]}`}</div>
-                      );
-                    })}
+                    <div className="flex flex-wrap gap-2">
+                      {Object.entries(
+                        data.current_user.solutions_by_language,
+                      ).map((language) => {
+                        return (
+                          <div
+                            key={`${language[0]}`}
+                            className="badge badge-outline"
+                          >{`${language[0]} ${language[1]}`}</div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
                 <div className="w-0 md:w-8"></div>
               </div>
             </div>
-            <div className="block md:hidden">
+            <div className="">
               <PieChart
                 series={[
                   {
@@ -101,40 +105,11 @@ export default function Stats() {
                   legend: {
                     direction: "column",
                     position: { vertical: "top", horizontal: "right" },
-                    padding: 0,
+                    padding: -8,
                     labelStyle: {
                       fontSize: 14,
                       fill: "#EFEFEF",
                     },
-                  },
-                }}
-                width={300}
-                height={200}
-              />
-            </div>
-            <div className="hidden md:block">
-              <PieChart
-                series={[
-                  {
-                    data: Object.entries(
-                      data.current_user.solutions_by_language,
-                    ).map(([label, value], index) => ({
-                      id: index,
-                      value: value,
-                      label: label,
-                    })) as { id: number; value: number; label: string }[],
-                    innerRadius: 70,
-                    highlightScope: { faded: "global", highlighted: "item" },
-                    faded: {
-                      innerRadius: 30,
-                      additionalRadius: -30,
-                      color: "gray",
-                    },
-                  },
-                ]}
-                slotProps={{
-                  legend: {
-                    hidden: true,
                   },
                 }}
                 width={300}

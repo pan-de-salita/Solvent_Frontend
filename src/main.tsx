@@ -10,7 +10,9 @@ import UserLayout, { loader as dashboardLoader } from "./layouts/UserLayout";
 import { AuthProvider } from "./contexts/AuthContext";
 import { action as logoutAction } from "./pages/Logout";
 import Stats from "./pages/Stats";
-import CompletedSolutions from "./pages/CompletedSolutions";
+import CompletedSolutions, {
+  loader as completedSolutionsLoader,
+} from "./pages/CompletedSolutions";
 
 const { router } = typesafeBrowserRouter([
   {
@@ -55,6 +57,7 @@ const { router } = typesafeBrowserRouter([
           {
             path: "completed_solutions",
             element: <CompletedSolutions />,
+            loader: completedSolutionsLoader,
           },
         ],
       },

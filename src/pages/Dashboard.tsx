@@ -54,7 +54,7 @@ export default function Dashboard() {
               </div>
               <div className="pt-2 text-sm">
                 Most Used Language:{" "}
-                <div className="badge badge-primary badge-outline">
+                <div className="badge badge-warning badge-outline">
                   {data.current_user.stats.most_used_language
                     ? data.current_user.stats.most_used_language
                     : "null"}
@@ -68,11 +68,11 @@ export default function Dashboard() {
             <div className="flex items-center p-4 rounded-l-lg bg-gradient-to-r from-[#1D1D1F] to-[#16171B] flex-grow">
               <FontAwesomeIcon icon={faDna} className="text-5xl pl-2 pr-6" />
               <div className="flex flex-col gap-1">
-                <span className="font-bold text-md text-red-500">
+                <span className="font-bold text-md">
                   Have you solved a puzzle today?
                 </span>
                 <span className="text-sm">
-                  Remember: a puzzle a day keeps the impostor syndrome away.
+                  Remember: A puzzle a day keeps impostor syndrome at bay.
                 </span>
                 <div className="pt-2 text-sm">
                   <button className="btn btn-outline btn-primary btn-xs">
@@ -83,14 +83,15 @@ export default function Dashboard() {
             </div>
             <a
               href="https://www.codewars.com/post/8-reasons-why-codewarriors-practice-coding-with-codewars"
+              target="_blank"
               className="h-full"
             >
               <div
                 role="button"
                 className="h-full flex flex-col justify-center gap-2 px-4 py-5 rounded-lg bg-gray-400 w-full md:max-w-xs"
               >
-                <span className="text-md font-bold">
-                  Read from this app's inspiration:
+                <span className="text-md font-bold text-blue-500">
+                  Read from the app's inspiration:
                 </span>
                 <span className="text-sm">
                   8 Reasons Why Codewarriors Practice Coding with Codewars

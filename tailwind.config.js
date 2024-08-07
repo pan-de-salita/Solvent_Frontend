@@ -18,6 +18,9 @@ export default {
         red: {
           500: "#CF4B32",
         },
+        blue: {
+          500: "#646EE4",
+        },
       },
     },
   },
