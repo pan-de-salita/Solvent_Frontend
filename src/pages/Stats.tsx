@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faClipboardCheck,
   faLaptopCode,
-  faFlaskVial,
 } from "@fortawesome/free-solid-svg-icons";
 import { PieChart } from "@mui/x-charts/PieChart";
 
@@ -22,7 +21,7 @@ export default function Stats() {
             />
             <div className="w-full flex flex-col justify-start gap-2">
               <h2 className="text-lg pb-1">Progress</h2>
-              <div className="w-full flex flex-col md:flex-row justify-between gap-4">
+              <div className="w-full flex flex-col md:flex-row justify-between md:gap-4">
                 <div className="flex flex-col gap-1">
                   <span className="text-sm">
                     Leaderboard Position:{" "}
@@ -37,12 +36,12 @@ export default function Stats() {
                     {data.current_user.created_puzzles.length}
                   </span>
                 </div>
-                <div className="flex items-start md:pl-24">
+                <div className="pt-1 flex items-start md:pl-24">
                   <FontAwesomeIcon
                     icon={faLaptopCode}
-                    className="rounded-md text-lg pr-2 text-red-500"
+                    className="hidden md:block rounded-md text-lg pr-2 text-red-500"
                   />
-                  <div className="flex flex-col items-start">
+                  <div className="w-full flex flex-col gap-1 items-start">
                     <span className="text-sm">
                       Total Languages Used: {data.current_user.languages.length}
                     </span>
@@ -55,16 +54,14 @@ export default function Stats() {
               </div>
             </div>
           </div>
-          <div className="flex gap-4">
-            <div className="w-[50%] flex flex-col justify-between md:justify-start gap-2 md:pl-20">
-              <div className="flex flex-col md:flex-row gap-4 h-full">
+          <div className="flex flex-col items-center md:flex-row md:items-start gap-4">
+            <div className="md:w-[54%] flex flex-col justify-between md:justify-start gap-2 md:pl-16">
+              <div className="flex flex-col md:flex-row gap-4 h-full md:pl-2">
                 <div className="flex items-start w-full h-full">
-                  <FontAwesomeIcon
-                    icon={faFlaskVial}
-                    className="rounded-md text-lg pr-2 text-red-500"
-                  />
                   <div className="flex flex-col items-start">
-                    <span className="text-sm pb-2">Language breakdown:</span>
+                    <span className="text-lg pb-2">
+                      Language-To-Solution Breakdown:
+                    </span>
                     {Object.entries(
                       data.current_user.solutions_by_language,
                     ).map((language) => {
@@ -80,40 +77,70 @@ export default function Stats() {
                 <div className="w-0 md:w-8"></div>
               </div>
             </div>
-            <PieChart
-              series={[
-                {
-                  data: Object.entries(
-                    data.current_user.solutions_by_language,
-                  ).map(([label, value], index) => ({
-                    id: index,
-                    value: value,
-                    label: label,
-                  })) as { id: number; value: number; label: string }[],
-                  innerRadius: 70,
-                  highlightScope: { faded: "global", highlighted: "item" },
-                  faded: {
-                    innerRadius: 30,
-                    additionalRadius: -30,
-                    color: "gray",
+            <div className="block md:hidden">
+              <PieChart
+                series={[
+                  {
+                    data: Object.entries(
+                      data.current_user.solutions_by_language,
+                    ).map(([label, value], index) => ({
+                      id: index,
+                      value: value,
+                      label: label,
+                    })) as { id: number; value: number; label: string }[],
+                    innerRadius: 70,
+                    highlightScope: { faded: "global", highlighted: "item" },
+                    faded: {
+                      innerRadius: 30,
+                      additionalRadius: -30,
+                      color: "gray",
+                    },
                   },
-                },
-              ]}
-              slotProps={{
-                legend: {
-                  hidden: true,
-                  direction: "column",
-                  position: { vertical: "top", horizontal: "right" },
-                  padding: 0,
-                  labelStyle: {
-                    fontSize: 14,
-                    fill: "#EFEFEF",
+                ]}
+                slotProps={{
+                  legend: {
+                    direction: "column",
+                    position: { vertical: "top", horizontal: "right" },
+                    padding: 0,
+                    labelStyle: {
+                      fontSize: 14,
+                      fill: "#EFEFEF",
+                    },
                   },
-                },
-              }}
-              width={300}
-              height={200}
-            />
+                }}
+                width={300}
+                height={200}
+              />
+            </div>
+            <div className="hidden md:block">
+              <PieChart
+                series={[
+                  {
+                    data: Object.entries(
+                      data.current_user.solutions_by_language,
+                    ).map(([label, value], index) => ({
+                      id: index,
+                      value: value,
+                      label: label,
+                    })) as { id: number; value: number; label: string }[],
+                    innerRadius: 70,
+                    highlightScope: { faded: "global", highlighted: "item" },
+                    faded: {
+                      innerRadius: 30,
+                      additionalRadius: -30,
+                      color: "gray",
+                    },
+                  },
+                ]}
+                slotProps={{
+                  legend: {
+                    hidden: true,
+                  },
+                }}
+                width={300}
+                height={200}
+              />
+            </div>
           </div>
         </div>
       </div>
