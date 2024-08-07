@@ -42,7 +42,7 @@ export default function CompletedSolutions() {
       <div className="px-4 md:px-0 w-full mx-auto flex justify-center text-gray-100">
         <div className="bg-gray-400 rounded-lg md:mx-4 p-4 w-full max-w-5xl flex shadow-sm">
           <div className="min-w-[7rem] hidden md:flex flex-col gap-1">
-            <h2 className="text-md">Quick facts</h2>
+            <h2 className="text-lg logo">Quick facts</h2>
             <span className="text-sm">
               Solutions: {data.current_user.solutions.length}
             </span>
@@ -60,7 +60,7 @@ export default function CompletedSolutions() {
 
                 return (
                   <div className="flex flex-col gap-4" key={puzzle?.id}>
-                    <span className="text-lg text-red-500">
+                    <span className="text-lg logo text-red-500">
                       {puzzle?.title ?? "Unknown Puzzle"}
                     </span>
                     {solutions.map((solution) => {

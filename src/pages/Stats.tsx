@@ -17,7 +17,7 @@ export default function Stats() {
               className="rounded-md pl-1 text-5xl pr-2 text-red-500"
             />
             <div className="w-full flex flex-col justify-start gap-2">
-              <h2 className="text-lg pb-1">Stats</h2>
+              <h2 className="text-lg logo pb-1">Stats</h2>
               <div className="w-full flex flex-col md:flex-row justify-between md:gap-4">
                 <div className="flex flex-col gap-1">
                   <span className="text-sm">
@@ -61,7 +61,7 @@ export default function Stats() {
               <div className="flex flex-col md:flex-row gap-4 h-full md:pl-2">
                 <div className="flex items-start w-full h-full">
                   <div className="flex flex-col items-start">
-                    <span className="text-md pb-2">
+                    <span className="logo text-md pb-2">
                       Language-To-Solution Breakdown:
                     </span>
                     <div className="flex flex-wrap gap-2">
