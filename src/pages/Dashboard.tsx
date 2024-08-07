@@ -105,9 +105,9 @@ export default function Dashboard() {
             <ul className="menu menu-horizontal rounded-box gap-2">
               <li>
                 <Link
-                  to="/dashboard/stats"
+                  to="/dashboard/"
                   className={
-                    location.pathname == "/dashboard/stats" ? "bg-gray-300" : ""
+                    location.pathname == "/dashboard/" ? "bg-gray-300" : ""
                   }
                 >
                   Stats
@@ -115,9 +115,9 @@ export default function Dashboard() {
               </li>
               <li>
                 <Link
-                  to="/dashboard/stats"
+                  to="/dashboard/completed_solutions"
                   className={
-                    location.pathname == "/dashboard/solutions"
+                    location.pathname == "/dashboard/completed_solutions"
                       ? "bg-gray-300"
                       : ""
                   }

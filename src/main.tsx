@@ -10,6 +10,7 @@ import UserLayout, { loader as dashboardLoader } from "./layouts/UserLayout";
 import { AuthProvider } from "./contexts/AuthContext";
 import { action as logoutAction } from "./pages/Logout";
 import Stats from "./pages/Stats";
+import CompletedSolutions from "./pages/CompletedSolutions";
 
 const { router } = typesafeBrowserRouter([
   {
@@ -44,12 +45,16 @@ const { router } = typesafeBrowserRouter([
     loader: dashboardLoader,
     children: [
       {
-        path: "stats",
+        path: "",
         element: <Dashboard />,
         children: [
           {
             index: true,
             element: <Stats />,
+          },
+          {
+            path: "completed_solutions",
+            element: <CompletedSolutions />,
           },
         ],
       },

@@ -56,7 +56,7 @@ export default function Signup() {
   const { isAuthorized } = useAuth();
 
   if (isAuthorized()) {
-    return <Navigate to="/dashboard/stats" replace={true} />;
+    return <Navigate to="/dashboard/" replace={true} />;
   }
 
   return (

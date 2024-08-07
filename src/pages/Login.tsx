@@ -30,7 +30,7 @@ async function login(credentials: { email: string; password: string }) {
     const authToken = response.headers.get("Authorization");
     if (authToken) {
       localStorage.setItem("Authorization", JSON.stringify(authToken));
-      return redirect("/dashboard/stats");
+      return redirect("/dashboard/");
     }
   } catch (error) {
     return error as Error;
@@ -51,7 +51,7 @@ export default function Login() {
   const { isAuthorized } = useAuth();
 
   if (isAuthorized()) {
-    return <Navigate to="/dashboard/stats" replace={true} />;
+    return <Navigate to="/dashboard/" replace={true} />;
   }
 
   return (
