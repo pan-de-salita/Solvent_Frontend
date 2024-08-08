@@ -95,7 +95,7 @@ export default function Dashboard() {
             >
               <div
                 role="button"
-                className="h-full flex flex-col justify-center gap-2 p-4 rounded-lg bg-gray-400 w-full md:max-w-xs"
+                className="h-full flex flex-col justify-center gap-2 p-4 rounded-lg bg-gray-400 w-full md:max-w-xs shadow-sm"
               >
                 <span className="text-lg text-blue-500 logo">
                   Read from the app's inspiration:

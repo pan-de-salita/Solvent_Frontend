@@ -85,7 +85,6 @@ export default function CreatedPuzzles() {
                   <div className="flex flex-col lg:flex-row">
                     <div className="lg:w-[40rem] flex flex-col items-start gap-4 pb-4">
                       <span className="text-sm">{puzz.description}</span>
-
                       <label className="swap pb-2">
                         <input type="checkbox" />
                         <div className="swap-off btn btn-xs btn-outline">

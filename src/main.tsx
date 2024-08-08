@@ -16,7 +16,11 @@ import CompletedSolutions, {
 import CreatedPuzzles, {
   loader as createdPuzzlesLoader,
 } from "./pages/CreatedPuzzles";
-import Puzzles, { loader as allPuzzlesLoader } from "./pages/Puzzles";
+import Puzzles, {
+  loader as allPuzzlesLoader,
+  action as createPuzzleAction,
+} from "./pages/Puzzles";
+import SolvePuzzle, { loader as solvePuzzleLoader } from "./pages/Puzzle";
 
 const { router } = typesafeBrowserRouter([
   {
@@ -78,15 +82,28 @@ const { router } = typesafeBrowserRouter([
         path: "puzzles",
         element: <Puzzles />,
         loader: allPuzzlesLoader,
+        action: createPuzzleAction,
+      },
+      {
+        path: "puzzles/:puzzleId",
+        element: <SolvePuzzle />,
+        loader: solvePuzzleLoader,
       },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <div className="bg-gray-500 min-h-screen">
+  <div className="bg-gray-500 min-h-screen flex flex-col justify-between">
     <React.StrictMode>
       <RouterProvider router={router} />
     </React.StrictMode>
+    <footer className="footer footer-center bg-gray-500 p-4">
+      <aside>
+        <p className="logo text-sm">
+          Copyleft 🄯 {new Date().getFullYear()} - No rights reserved by Solvent
+        </p>
+      </aside>
+    </footer>
   </div>,
 );
