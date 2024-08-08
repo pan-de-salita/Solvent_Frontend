@@ -93,7 +93,10 @@ export default function UserLayout() {
           </div>
           <div>
             <div className="dropdown dropdown-end h-full">
-              <div className="rounded-lg mr-0 lg:mr-4 p-3 h-full btn-ghost">
+              <div
+                className="tooltip tooltip-left rounded-lg mr-0 lg:mr-4 p-3 h-full btn-ghost"
+                data-tip={`What's cooking, ${data.current_user.username}?`}
+              >
                 <img
                   alt={data.current_user.username}
                   src={blo(data.current_user.username as `0x${string}`)}

@@ -139,11 +139,7 @@ export default function Dashboard() {
           </div>
         </div>
         {/* outlet */}
-        <div
-          className={`${navigation.state == "loading" ? "blur-sm" : ""} w-full`}
-        >
-          <Outlet context={{ data }} />
-        </div>
+        <Outlet context={{ data }} />
       </div>
     </>
   );

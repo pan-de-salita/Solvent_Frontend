@@ -61,7 +61,7 @@ export default function Signup() {
 
   return (
     <>
-      <div className="flex h-screen w-screen flex-col items-center bg-gray-500">
+      <div className="flex flex-col items-center bg-gray-500">
         <Form
           method="post"
           className="mt-16 flex w-[20rem] flex-col items-center justify-center gap-4 rounded-lg bg-gray-400 px-6 py-8 md:min-w-[30rem] shadow-sm"

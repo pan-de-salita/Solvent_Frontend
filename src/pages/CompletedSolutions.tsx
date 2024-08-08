@@ -51,7 +51,7 @@ export default function CompletedSolutions() {
             </span>
           </div>
           <div className="divider divider-horizontal"></div>
-          <div className="flex flex-col gap-6">
+          <div className="w-full flex flex-col gap-6">
             {Object.entries(data.current_user.solutions_by_puzzle)
               .reverse()
               .map(([puzzleId, solutions]) => {

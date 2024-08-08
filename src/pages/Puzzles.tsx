@@ -147,8 +147,8 @@ export default function Puzzles() {
                     Help others fail again, but fail better.
                   </h1>
                   <span>
-                    Have a cool puzzle? Share it with the community and inspire
-                    others to solve it!
+                    Have a cool puzzle? Share it with the community! You know
+                    what they say: Archiving is caring.
                   </span>
                 </div>
                 <Form
@@ -206,8 +206,8 @@ export default function Puzzles() {
                             {puzz.description}
                           </p>
                         </div>
-                        <div className="divider divider-horizontal ml-0 "></div>
-                        <div className="lg:min-w-26 flex flex-col gap-1 min-w-[8rem]">
+                        <div className="divider divider-horizontal ml-1 mr-4"></div>
+                        <div className="lg:min-w-26 flex flex-col gap-2 min-w-[8rem]">
                           <div className="flex justify-start flex-wrap gap-1">
                             {Object.entries(puzz.solutions_by_languages).map(
                               ([language, solutions]) => {
@@ -219,7 +219,7 @@ export default function Puzzles() {
                                   >
                                     <div className="py-1">
                                       <i
-                                        className={`devicon-${language.toLowerCase()}-plain text-lg p-2 bg-gray-900 rounded-lg`}
+                                        className={`devicon-${language.toLowerCase()}-plain text-xl p-2 bg-gray-900 rounded-lg`}
                                       ></i>
                                     </div>
                                   </div>
