@@ -6,7 +6,7 @@ import { Link, RouterProvider } from "react-router-dom";
 import Login, { action as loginAction } from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Signup, { action as signupAction } from "./pages/Signup";
-import UserLayout, { loader as dashboardLoader } from "./layouts/UserLayout";
+import UserLayout, { loader as userLayoutLoader } from "./layouts/UserLayout";
 import { AuthProvider } from "./contexts/AuthContext";
 import { action as logoutAction } from "./pages/Logout";
 import Stats from "./pages/Stats";
@@ -47,7 +47,7 @@ const { router } = typesafeBrowserRouter([
         <UserLayout />
       </AuthProvider>
     ),
-    loader: dashboardLoader,
+    loader: userLayoutLoader,
     children: [
       {
         path: "",
@@ -74,6 +74,15 @@ const { router } = typesafeBrowserRouter([
         action: logoutAction,
       },
     ],
+  },
+  {
+    path: "puzzles",
+    element: (
+      <AuthProvider>
+        <UserLayout />
+      </AuthProvider>
+    ),
+    loader: userLayoutLoader,
   },
 ]);
 

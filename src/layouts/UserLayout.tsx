@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faVial,
   faMicroscope,
-  faAtom,
+  faBrain,
 } from "@fortawesome/free-solid-svg-icons";
 import { blo } from "blo";
 
@@ -82,10 +82,10 @@ export default function UserLayout() {
                 </svg>
               </label>
             </div>
-            <div className="flex items-center justify-center gap-1 text-red-400">
+            <div className="flex items-center justify-center gap-1 text-red-500">
               <FontAwesomeIcon
                 icon={faVial}
-                className="hidden md:block rounded-md border-2 border-red-400 p-1 text-xs"
+                className="hidden md:block rounded-md border-2 border-red-500 p-1 text-xs"
               />
               <span className="logo text-2xl">solvent</span>
               <span className="pl-1 pt-1 logo text-lg text-gray-200">
@@ -139,20 +139,20 @@ export default function UserLayout() {
           <li>
             <Link
               to="/dashboard/"
-              className={`flex justify-start items-center ${location.pathname.includes("/dashboard/") ? "rounded-none border-4 border-red-500 border-t-0 border-r-0 border-b-0 pointer-events-none" : ""}`}
+              className={`flex justify-start items-center`}
             >
-              <FontAwesomeIcon icon={faAtom} className="text-3xl pr-3" />
+              <FontAwesomeIcon icon={faBrain} className="text-3xl pr-3" />
               <div className="flex flex-col items-start">
                 <span className="text-lg logo">Home</span>
                 <span className="text-xs font-medium">
-                  Report back for stats and progress.
+                  Report back to see your stats and progress.
                 </span>
               </div>
             </Link>
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="#" className="flex justify-start items-center">
+            <Link to="/puzzles/" className={`flex justify-start items-center`}>
               <FontAwesomeIcon icon={faMicroscope} className="text-3xl pr-3" />
               <div className="flex flex-col items-start">
                 <span className="text-lg logo">Puzzles</span>
