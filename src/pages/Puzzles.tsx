@@ -1,4 +1,4 @@
-import { Form, useLoaderData, useNavigation } from "react-router-dom";
+import { Form, Link, useLoaderData, useNavigation } from "react-router-dom";
 import { allPuzzle } from "../types/allPuzz";
 
 async function getAllPuzzes(q: string | null) {
@@ -92,53 +92,59 @@ export default function Puzzles() {
             </a>
           </div>
           <div className="flex-1">
-            <div className="w-full flex flex-col gap-6">
+            <div className="w-full flex flex-col gap-5">
+              <span className="logo">{allPuzzData.length} puzzles found.</span>
               {allPuzzData.map((puzz) => {
                 return (
-                  <div
-                    className="flex flex-col gap-4 bg-gray-400 p-4 rounded-lg"
-                    key={puzz.id}
-                  >
-                    <div>
-                      <span className="text-lg text-red-500 logo">
-                        {puzz.title}
-                      </span>{" "}
-                      <span className="text-sm text-gray-200 pb-4">
-                        {new Date(puzz.created_at).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "short",
-                        })}
-                      </span>
-                    </div>
-
-                    <div className="flex flex-col lg:flex-row">
-                      <div className="lg:w-full lg:max-w-3xl flex flex-col items-start gap-4 pb-4">
-                        <span className="text-sm">{puzz.description}</span>
-                      </div>
-                      <div className="divider divider-horizontal ml-0 "></div>
-                      <div className="lg:min-w-26 flex flex-col gap-1 min-w-[8rem]">
-                        <div className="flex justify-start flex-wrap gap-1">
-                          {Object.entries(puzz.solutions_by_languages).map(
-                            ([language, solutions]) => {
-                              return (
-                                <div
-                                  key={language}
-                                  className="tooltip"
-                                  data-tip={`${solutions.length} ${solutions.length === 1 ? "solution" : "solutions"} in ${language}`}
-                                >
-                                  <div className="py-1">
-                                    <i
-                                      className={`devicon-${language.toLowerCase()}-plain text-lg p-2 bg-gray-900 rounded-lg`}
-                                    ></i>
-                                  </div>
-                                </div>
-                              );
+                  <Link to={`puzzles/${puzz.id}`}>
+                    <div
+                      className="flex flex-col gap-4 bg-gray-400 p-4 rounded-lg"
+                      key={puzz.id}
+                    >
+                      <div>
+                        <span className="text-lg text-red-500 logo">
+                          {puzz.title}
+                        </span>{" "}
+                        <span className="text-sm text-gray-200 pb-4">
+                          {new Date(puzz.created_at).toLocaleDateString(
+                            "en-US",
+                            {
+                              year: "numeric",
+                              month: "short",
                             },
                           )}
+                        </span>
+                      </div>
+
+                      <div className="flex flex-col lg:flex-row">
+                        <div className="lg:w-full lg:max-w-3xl flex flex-col items-start gap-4 pb-4">
+                          <span className="text-sm">{puzz.description}</span>
+                        </div>
+                        <div className="divider divider-horizontal ml-0 "></div>
+                        <div className="lg:min-w-26 flex flex-col gap-1 min-w-[8rem]">
+                          <div className="flex justify-start flex-wrap gap-1">
+                            {Object.entries(puzz.solutions_by_languages).map(
+                              ([language, solutions]) => {
+                                return (
+                                  <div
+                                    key={language}
+                                    className="tooltip"
+                                    data-tip={`${solutions.length} ${solutions.length === 1 ? "solution" : "solutions"} in ${language}`}
+                                  >
+                                    <div className="py-1">
+                                      <i
+                                        className={`devicon-${language.toLowerCase()}-plain text-lg p-2 bg-gray-900 rounded-lg`}
+                                      ></i>
+                                    </div>
+                                  </div>
+                                );
+                              },
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>
