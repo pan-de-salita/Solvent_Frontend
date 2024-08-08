@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { typesafeBrowserRouter } from "react-router-typesafe";
-import { Link, RouterProvider } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import Login, { action as loginAction } from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Signup, { action as signupAction } from "./pages/Signup";
@@ -25,10 +25,15 @@ import SolvePuzzle, { loader as solvePuzzleLoader } from "./pages/Puzzle";
 const { router } = typesafeBrowserRouter([
   {
     path: "/",
-    element: <Link to={`/login`}>click me</Link>,
+    element: (
+      <AuthProvider>
+        <Login />
+      </AuthProvider>
+    ),
+    action: loginAction,
   },
   {
-    path: "signup",
+    path: "/signup",
     element: (
       <AuthProvider>
         <Signup />
