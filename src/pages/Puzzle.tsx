@@ -1,5 +1,7 @@
 import { redirect, useLoaderData } from "react-router-dom";
 import { Puzzle } from "../types/puzzle";
+import Editor from "@monaco-editor/react";
+import { useRef } from "react";
 
 async function getPuzzle(puzzleId: number, authToken: string) {
   try {
@@ -38,5 +40,28 @@ export async function loader({ params }: { params: any }) {
 
 export default function SolvePuzzle() {
   const { puzzle } = useLoaderData() as { puzzle: Puzzle };
-  return <div>{JSON.stringify(puzzle)}</div>;
+
+  const editorRef = useRef(null);
+
+  function handleEditorDidMount(editor, monaco) {
+    editorRef.current = editor;
+  }
+
+  function showValue() {
+    alert(editorRef.current.getValue());
+  }
+
+  return (
+    <div>
+      {JSON.stringify(puzzle)}
+      <Editor
+        height="20vh"
+        defaultLanguage="javascript"
+        defaultValue="// some comment"
+        theme="vs-dark"
+        onMount={handleEditorDidMount}
+      />
+      <button onClick={showValue}>Show value</button>
+    </div>
+  );
 }

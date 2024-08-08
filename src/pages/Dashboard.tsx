@@ -1,10 +1,4 @@
-import {
-  Link,
-  Outlet,
-  useLocation,
-  useNavigation,
-  useOutletContext,
-} from "react-router-dom";
+import { Link, Outlet, useLocation, useOutletContext } from "react-router-dom";
 import { User } from "../types/user";
 import { blo } from "blo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,7 +7,6 @@ import { faDna } from "@fortawesome/free-solid-svg-icons";
 export default function Dashboard() {
   const { data } = useOutletContext() as { data: User };
   const location = useLocation();
-  const navigation = useNavigation();
 
   return (
     <>
@@ -82,9 +75,11 @@ export default function Dashboard() {
                   Remember: A puzzle a day keeps impostor syndrome at bay.
                 </span>
                 <div className="pt-2 text-sm">
-                  <button className="btn btn-outline btn-primary btn-xs">
-                    SOLVE RANDOM PUZZLE
-                  </button>
+                  <Link to="/puzzles/">
+                    <button className="btn btn-outline btn-primary btn-xs">
+                      SOLVE A PUZZLE
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
