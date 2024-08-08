@@ -41,9 +41,30 @@ export default function CreatedPuzzles() {
     <>
       <div className="px-4 md:px-0 w-full mx-auto flex justify-center text-gray-100">
         <div className="bg-gray-400 rounded-lg md:mx-4 p-4 w-full max-w-5xl flex shadow-sm">
-          <div className="min-w-[7rem] hidden md:flex flex-col gap-1">
+          <div className="min-w-[10rem] hidden md:flex flex-col gap-1">
             <h2 className="text-lg logo">Quick facts</h2>
-            <span className="text-sm">Created: {puzzData.length}</span>
+            <span className="text-sm">
+              Languages Used:{" "}
+              {
+                puzzData
+                  .map((puzz) => puzz.solutions_by_languages)
+                  .flat()
+                  .map((solByLang) => Object.keys(solByLang)).length
+              }
+            </span>
+            <span className="text-sm">
+              Submitted Solutions:{" "}
+              {puzzData
+                .map((puzz) => puzz.solutions_by_languages)
+                .reduce((count, solByLang) => {
+                  return (
+                    count +
+                    Object.values(solByLang).reduce((acc, curr) => {
+                      return acc + curr.length;
+                    }, 0)
+                  );
+                }, 0)}
+            </span>
           </div>
           <div className="divider divider-horizontal"></div>
           <div className="w-full flex flex-col gap-6">
@@ -59,7 +80,7 @@ export default function CreatedPuzzles() {
 
                       <label className="swap pb-2">
                         <input type="checkbox" />
-                        <div className="swap-off btn btn-xs btn-primary btn-outline">
+                        <div className="swap-off btn btn-xs btn-outline">
                           REVEAL ANSWER
                         </div>
                         <div className="swap-on text-sm text-success">
@@ -77,7 +98,7 @@ export default function CreatedPuzzles() {
                                 <div
                                   key={language}
                                   className="tooltip"
-                                  data-tip={`${solutions.length} ${solutions.length === 1 ? "solution" : "solutions"}`}
+                                  data-tip={`${solutions.length} ${solutions.length === 1 ? "solution" : "solutions"} in ${language}`}
                                 >
                                   <i
                                     className={`devicon-${language.toLowerCase()}-plain text-md p-2 bg-gray-900 rounded-lg`}

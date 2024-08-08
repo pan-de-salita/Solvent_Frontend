@@ -68,7 +68,7 @@ export default function Dashboard() {
             <div className="flex items-center p-4 rounded-l-lg bg-gradient-to-r from-[#1D1D1F] to-[#16171B] flex-grow">
               <FontAwesomeIcon icon={faDna} className="text-5xl pl-2 pr-6" />
               <div className="flex flex-col gap-1">
-                <span className="font-bold text-md">
+                <span className="text-lg logo">
                   Have you solved a puzzle today?
                 </span>
                 <span className="text-sm">
@@ -90,7 +90,7 @@ export default function Dashboard() {
                 role="button"
                 className="h-full flex flex-col justify-center gap-2 px-4 py-5 rounded-lg bg-gray-400 w-full md:max-w-xs"
               >
-                <span className="text-md font-bold text-blue-500">
+                <span className="text-lg text-blue-500 logo">
                   Read from the app's inspiration:
                 </span>
                 <span className="text-sm">
@@ -107,9 +107,7 @@ export default function Dashboard() {
               <li>
                 <Link
                   to="/dashboard/"
-                  className={
-                    location.pathname == "/dashboard/" ? "bg-gray-300" : ""
-                  }
+                  className={`${location.pathname === "/dashboard/" ? "bg-gray-300" : ""} logo`}
                 >
                   Stats
                 </Link>
@@ -117,11 +115,7 @@ export default function Dashboard() {
               <li>
                 <Link
                   to="/dashboard/completed_solutions"
-                  className={
-                    location.pathname == "/dashboard/completed_solutions"
-                      ? "bg-gray-300"
-                      : ""
-                  }
+                  className={`${location.pathname === "/dashboard/completed_solutions" ? "bg-gray-300" : ""} logo`}
                 >
                   Solutions
                 </Link>
@@ -129,11 +123,7 @@ export default function Dashboard() {
               <li>
                 <Link
                   to="/dashboard/created_puzzles"
-                  className={
-                    location.pathname == "/dashboard/created_puzzles"
-                      ? "bg-gray-300"
-                      : ""
-                  }
+                  className={`${location.pathname === "/dashboard/created_puzzles" ? "bg-gray-300" : ""} logo`}
                 >
                   Puzzles
                 </Link>

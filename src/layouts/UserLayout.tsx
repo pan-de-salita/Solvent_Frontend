@@ -5,6 +5,7 @@ import {
   Outlet,
   redirect,
   useLoaderData,
+  useLocation,
 } from "react-router-dom";
 import { User } from "../types/user";
 import { useAuth } from "../contexts/AuthContext";
@@ -51,6 +52,7 @@ export async function loader() {
 export default function UserLayout() {
   const { data } = useLoaderData() as { data: User };
   const { isAuthorized } = useAuth();
+  const location = useLocation();
 
   return isAuthorized() && data ? (
     <div className="drawer bg-gray-500">
@@ -93,7 +95,7 @@ export default function UserLayout() {
           </div>
           <div>
             <div className="dropdown dropdown-end h-full">
-              <div className="rounded-lg mr-4 p-3 h-full btn-ghost">
+              <div className="rounded-lg mr-0 lg:mr-4 p-3 h-full btn-ghost">
                 <img
                   alt={data.current_user.username}
                   src={blo(data.current_user.username as `0x${string}`)}
@@ -136,14 +138,14 @@ export default function UserLayout() {
           {/* Sidebar content here */}
           <li>
             <Link
-              to="/dashboard/stats"
-              className="flex justify-start items-center"
+              to="/dashboard/"
+              className={`flex justify-start items-center ${location.pathname.includes("/dashboard/") ? "rounded-none border-4 border-red-500 border-t-0 border-r-0 border-b-0 pointer-events-none" : ""}`}
             >
               <FontAwesomeIcon icon={faAtom} className="text-3xl pr-3" />
               <div className="flex flex-col items-start">
-                <span className="text-md font-bold">Lab</span>
+                <span className="text-lg logo">Home</span>
                 <span className="text-xs font-medium">
-                  Report back to the lab for stats and progress.
+                  Report back for stats and progress.
                 </span>
               </div>
             </Link>
@@ -153,7 +155,7 @@ export default function UserLayout() {
             <Link to="#" className="flex justify-start items-center">
               <FontAwesomeIcon icon={faMicroscope} className="text-3xl pr-3" />
               <div className="flex flex-col items-start">
-                <span className="text-md font-bold">Puzzles</span>
+                <span className="text-lg logo">Puzzles</span>
                 <span className="text-xs font-medium">
                   Complete challenging puzzles. Retrain to hone technique.
                 </span>

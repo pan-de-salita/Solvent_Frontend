@@ -25,12 +25,12 @@ export default function Stats() {
                     {data.current_user.stats.leaderboard_position}
                   </span>
                   <span className="text-sm">
-                    Total Solved Puzzles:{" "}
-                    {data.current_user.solved_puzzles.length}
-                  </span>
-                  <span className="text-sm">
                     Total Completed Solutions:{" "}
                     {data.current_user.solutions.length}
+                  </span>
+                  <span className="text-sm">
+                    Total Solved Puzzles:{" "}
+                    {data.current_user.solved_puzzles.length}
                   </span>
                   <span className="text-sm">
                     Total Authored Puzzles:{" "}
