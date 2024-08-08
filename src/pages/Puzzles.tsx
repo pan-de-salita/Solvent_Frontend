@@ -161,19 +161,19 @@ export default function Puzzles() {
                     placeholder="Title"
                     type="text"
                     name="title"
-                    className="max-h-8 border border-gray-200 rounded-lg p-2 text-sm flex-1 bg-gray-900 placeholder:text-gray-200 outline-none"
+                    className="max-h-8 border border-gray-200 rounded-lg p-2 text-sm flex-1 bg-transparent placeholder:text-gray-200 outline-none"
                   />
                   <textarea
                     placeholder="Description"
                     name="description"
-                    className="border border-gray-200 rounded-lg p-2 text-sm flex-1 bg-gray-900 placeholder:text-gray-200 outline-none"
+                    className="border border-gray-200 rounded-lg p-2 text-sm flex-1 bg-transparent placeholder:text-gray-200 outline-none"
                     rows={5}
                   />
                   <input
                     placeholder="Expected Output"
                     type="text"
                     name="expected_output"
-                    className="max-h-8 border border-gray-200 rounded-lg p-2 text-sm flex-1 bg-gray-900 placeholder:text-gray-200 outline-none"
+                    className="max-h-8 border border-gray-200 rounded-lg p-2 text-sm flex-1 bg-transparent placeholder:text-gray-200 outline-none"
                   />
                   <div className="flex justify-end">
                     <button
