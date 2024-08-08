@@ -52,8 +52,9 @@ export default function CompletedSolutions() {
           </div>
           <div className="divider divider-horizontal"></div>
           <div className="flex flex-col gap-6">
-            {Object.entries(data.current_user.solutions_by_puzzle).map(
-              ([puzzleId, solutions]) => {
+            {Object.entries(data.current_user.solutions_by_puzzle)
+              .reverse()
+              .map(([puzzleId, solutions]) => {
                 const puzzle = data.current_user.solved_puzzles.find(
                   (puz) => puz.id === Number(puzzleId),
                 );
@@ -76,7 +77,7 @@ export default function CompletedSolutions() {
                           <code className="text-xs whitespace-pre-wrap bg-gray-800 p-2 rounded-lg overflow-x-auto">
                             {solution.source_code}
                           </code>
-                          <span className="text-sm text-gray-200 pb-4">
+                          <span className="text-sm text-gray-200 pb-3">
                             {new Date(solution.created_at).toLocaleDateString(
                               "en-US",
                               {
@@ -90,8 +91,7 @@ export default function CompletedSolutions() {
                     })}
                   </div>
                 );
-              },
-            )}
+              })}
           </div>
         </div>
       </div>

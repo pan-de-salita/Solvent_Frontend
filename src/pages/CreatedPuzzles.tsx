@@ -16,7 +16,7 @@ async function getCreatedPuzzles(authToken: string) {
     );
 
     const data = await response.json();
-    return data.data.current_user_created_puzzles;
+    return data.data.current_user_created_puzzles.reverse();
   } catch (error) {
     console.log(error);
     return null;
@@ -71,9 +71,17 @@ export default function CreatedPuzzles() {
             {puzzData.map((puzz) => {
               return (
                 <div className="flex flex-col gap-4" key={puzz.id}>
-                  <span className="text-lg text-red-500 logo">
-                    {puzz.title}
-                  </span>
+                  <div>
+                    <span className="text-lg text-red-500 logo">
+                      {puzz.title}
+                    </span>{" "}
+                    <span className="text-sm text-gray-200 pb-4">
+                      {new Date(puzz.created_at).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                      })}
+                    </span>
+                  </div>
                   <div className="flex flex-col lg:flex-row">
                     <div className="lg:w-[40rem] flex flex-col items-start gap-4 pb-4">
                       <span className="text-sm">{puzz.description}</span>
@@ -88,28 +96,26 @@ export default function CreatedPuzzles() {
                         </div>
                       </label>
                     </div>
-                    <div className="divider divider-horizontal"></div>
-                    {Object.entries(puzz.solutions_by_languages).length ? (
-                      <div className="flex flex-col gap-1">
-                        <div className="flex justify-start flex-wrap gap-1">
-                          {Object.entries(puzz.solutions_by_languages).map(
-                            ([language, solutions]) => {
-                              return (
-                                <div
-                                  key={language}
-                                  className="tooltip"
-                                  data-tip={`${solutions.length} ${solutions.length === 1 ? "solution" : "solutions"} in ${language}`}
-                                >
-                                  <i
-                                    className={`devicon-${language.toLowerCase()}-plain text-md p-2 bg-gray-900 rounded-lg`}
-                                  ></i>
-                                </div>
-                              );
-                            },
-                          )}
-                        </div>
-                      </div>
-                    ) : null}
+                    <div className="divider divider-horizontal ml-0 "></div>
+                    <div className="lg:min-w-26 flex justify-start flex-wrap gap-1">
+                      {Object.entries(puzz.solutions_by_languages).map(
+                        ([language, solutions]) => {
+                          return (
+                            <div
+                              key={language}
+                              className="tooltip"
+                              data-tip={`${solutions.length} ${solutions.length === 1 ? "solution" : "solutions"} in ${language}`}
+                            >
+                              <div className="py-1">
+                                <i
+                                  className={`devicon-${language.toLowerCase()}-plain text-lg p-2 bg-gray-900 rounded-lg`}
+                                ></i>
+                              </div>
+                            </div>
+                          );
+                        },
+                      )}
+                    </div>
                   </div>
                 </div>
               );

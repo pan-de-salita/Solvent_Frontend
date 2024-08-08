@@ -5,7 +5,6 @@ import {
   Outlet,
   redirect,
   useLoaderData,
-  useLocation,
 } from "react-router-dom";
 import { User } from "../types/user";
 import { useAuth } from "../contexts/AuthContext";
@@ -52,7 +51,6 @@ export async function loader() {
 export default function UserLayout() {
   const { data } = useLoaderData() as { data: User };
   const { isAuthorized } = useAuth();
-  const location = useLocation();
 
   return isAuthorized() && data ? (
     <div className="drawer bg-gray-500">
@@ -89,7 +87,7 @@ export default function UserLayout() {
               />
               <span className="logo text-2xl">solvent</span>
               <span className="pl-1 pt-1 logo text-lg text-gray-200">
-                v1.2.0
+                v0.1.2
               </span>
             </div>
           </div>

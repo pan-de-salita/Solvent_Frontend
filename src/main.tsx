@@ -16,6 +16,7 @@ import CompletedSolutions, {
 import CreatedPuzzles, {
   loader as createdPuzzlesLoader,
 } from "./pages/CreatedPuzzles";
+import Puzzles, { loader as allPuzzlesLoader } from "./pages/Puzzles";
 
 const { router } = typesafeBrowserRouter([
   {
@@ -41,7 +42,7 @@ const { router } = typesafeBrowserRouter([
     action: loginAction,
   },
   {
-    path: "dashboard",
+    path: "",
     element: (
       <AuthProvider>
         <UserLayout />
@@ -50,7 +51,7 @@ const { router } = typesafeBrowserRouter([
     loader: userLayoutLoader,
     children: [
       {
-        path: "",
+        path: "dashboard",
         element: <Dashboard />,
         children: [
           {
@@ -73,21 +74,19 @@ const { router } = typesafeBrowserRouter([
         path: "logout",
         action: logoutAction,
       },
+      {
+        path: "puzzles",
+        element: <Puzzles />,
+        loader: allPuzzlesLoader,
+      },
     ],
-  },
-  {
-    path: "puzzles",
-    element: (
-      <AuthProvider>
-        <UserLayout />
-      </AuthProvider>
-    ),
-    loader: userLayoutLoader,
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+  <div className="bg-gray-500 min-h-screen">
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </div>,
 );

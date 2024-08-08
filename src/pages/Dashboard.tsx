@@ -1,4 +1,10 @@
-import { Link, Outlet, useLocation, useOutletContext } from "react-router-dom";
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigation,
+  useOutletContext,
+} from "react-router-dom";
 import { User } from "../types/user";
 import { blo } from "blo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,10 +13,11 @@ import { faDna } from "@fortawesome/free-solid-svg-icons";
 export default function Dashboard() {
   const { data } = useOutletContext() as { data: User };
   const location = useLocation();
+  const navigation = useNavigation();
 
   return (
     <>
-      <div className="w-full min-h-screen flex flex-col items-center py-4">
+      <div className="w-full flex flex-col items-center py-4">
         {/* profile */}
         <div className="my-2 w-full md:h-44 mx-auto flex justify-center text-gray-100">
           <div className="bg-gray-900 rounded-lg mx-4 p-4 w-full max-w-5xl flex gap-4 shadow-sm">
@@ -88,7 +95,7 @@ export default function Dashboard() {
             >
               <div
                 role="button"
-                className="h-full flex flex-col justify-center gap-2 px-4 py-5 rounded-lg bg-gray-400 w-full md:max-w-xs"
+                className="h-full flex flex-col justify-center gap-2 p-4 rounded-lg bg-gray-400 w-full md:max-w-xs"
               >
                 <span className="text-lg text-blue-500 logo">
                   Read from the app's inspiration:
@@ -132,7 +139,11 @@ export default function Dashboard() {
           </div>
         </div>
         {/* outlet */}
-        <Outlet context={{ data }} />
+        <div
+          className={`${navigation.state == "loading" ? "blur-sm" : ""} w-full`}
+        >
+          <Outlet context={{ data }} />
+        </div>
       </div>
     </>
   );

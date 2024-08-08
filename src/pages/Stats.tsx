@@ -81,7 +81,7 @@ export default function Stats() {
                 <div className="w-0 md:w-8"></div>
               </div>
             </div>
-            <div className="">
+            <div className="pl-4">
               <PieChart
                 series={[
                   {
