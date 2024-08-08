@@ -191,7 +191,7 @@ export default function Puzzles() {
                   <Link to={`/puzzles/${puzz.id}`} key={puzz.id}>
                     {" "}
                     {/* Key added here */}
-                    <div className="flex flex-col gap-4 bg-gray-400 p-4 rounded-lg shadow-sm">
+                    <div className="flex flex-col gap-4 bg-gray-400 p-4 rounded-lg shadow-sm hover:bg-gradient-to-r from-gray-900 to-[#161C2A]">
                       <div>
                         <span className="text-lg text-red-500 logo">
                           {puzz.title}
