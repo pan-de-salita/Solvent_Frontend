@@ -24,6 +24,7 @@ import SolvePuzzle, {
   loader as solvePuzzleLoader,
   action as solvePuzzleAction,
 } from "./pages/Puzzle";
+import Social from "./pages/Social";
 
 const { router } = typesafeBrowserRouter([
   {
@@ -79,6 +80,10 @@ const { router } = typesafeBrowserRouter([
             path: "created_puzzles",
             element: <CreatedPuzzles />,
             loader: createdPuzzlesLoader,
+          },
+          {
+            path: "social",
+            element: <Social />,
           },
         ],
       },

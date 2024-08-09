@@ -32,14 +32,26 @@ interface UserStats {
   most_used_language: string | null;
 }
 
+interface Following {
+  id: number;
+  username: string;
+  most_used_language: string;
+}
+
+interface Follower {
+  id: number;
+  username: string;
+  most_used_language: string;
+}
+
 interface CurrentUser {
   id: number;
   username: string;
   email: string;
   created_at: Date;
   updated_at: Date;
-  following: number[];
-  followers: number[];
+  following: Following[];
+  followers: Follower[];
   solutions: CompletedSolution[];
   solved_puzzles: Puzzle[];
   solutions_by_puzzle: Record<number, CompletedSolution[]>;

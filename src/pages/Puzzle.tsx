@@ -43,7 +43,6 @@ async function getSolvedPuzzles(authToken: string) {
     );
 
     const data = await response.json();
-    console.log(data);
     return data.data.current_user_solved_puzzles;
   } catch (error) {
     console.log(error);
@@ -179,9 +178,10 @@ export default function SolvePuzzle() {
           <div className="w-full relative bg-gray-400 h-full rounded-lg shadow-sm ">
             <div className="bg-gray-800 h-8 rounded-t-lg flex items-center px-4 w-full gap-2">
               <span
-                className={`${enableSolutions ? "text-gray-100" : "text-red-500"} text-sm font-bold`}
+                className={`${enableSolutions || !Object.entries(puzzle.solutions_by_languages).length ? "text-gray-100" : "text-red-500"} text-sm font-bold`}
               >
-                {enableSolutions
+                {enableSolutions ||
+                !Object.entries(puzzle.solutions_by_languages).length
                   ? "Solutions"
                   : "Solve the puzzle to unlock others' solutions"}
               </span>

@@ -130,6 +130,14 @@ export default function Dashboard() {
                   Puzzles
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/dashboard/social"
+                  className={`${location.pathname === "/dashboard/social" ? "bg-gray-300" : ""} logo`}
+                >
+                  Social
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
