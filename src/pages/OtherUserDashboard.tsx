@@ -4,7 +4,6 @@ import {
   Outlet,
   redirect,
   useLoaderData,
-  useLocation,
   useOutletContext,
 } from "react-router-dom";
 import { OtherUser, User } from "../types/user";
