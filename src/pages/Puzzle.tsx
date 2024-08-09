@@ -230,9 +230,6 @@ export default function SolvePuzzle() {
                               {solution.source_code}
                             </code>
                             <div className="flex items-center gap-2">
-                              {
-                                // Add user link here
-                              }
                               <span className="text-sm text-gray-200">
                                 {new Date(
                                   solution.created_at,
