@@ -110,6 +110,7 @@ async function createSolution(
       },
     );
 
+    console.log(response);
     return response;
   } catch (error) {
     return error as Error;
@@ -234,11 +235,11 @@ export default function SolvePuzzle() {
               id="solution-form"
               className="w-full h-full flex flex-col gap-4 rounded-lg p-4 bg-gray-800"
             >
-              <h1 className="logo text-xl">Your Attempt</h1>
+              <h1 className="logo text-xl text-gray-100">Your Attempt</h1>
               <input type="hidden" name="puzzle_id" defaultValue={puzzle.id} />
               <select
                 name="language_id"
-                className="max-h-9 border border-gray-200 rounded-lg p-2 text-sm bg-transparent outline-none"
+                className="max-h-9 border border-gray-200 rounded-lg p-2 text-sm bg-transparent outline-none text-gray-100"
               >
                 {langData.map((language) => (
                   <option key={language.id} value={language.id}>
@@ -256,7 +257,7 @@ export default function SolvePuzzle() {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="btn-md md:btn-sm btn btn-error"
+                  className="btn-md md:btn-sm btn btn-error btn-outline"
                 >
                   Submit
                 </button>
