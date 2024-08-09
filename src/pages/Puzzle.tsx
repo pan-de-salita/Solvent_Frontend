@@ -1,6 +1,7 @@
-import { Form, redirect, useLoaderData } from "react-router-dom";
+import { Form, Link, redirect, useLoaderData } from "react-router-dom";
 import { Puzzle } from "../types/puzzle";
 import { useEffect, useState } from "react";
+import { blo } from "blo";
 
 interface Language {
   id: number;
@@ -147,7 +148,6 @@ export default function SolvePuzzle() {
   const [enableSolutions, setEnableSolutions] = useState(false);
 
   useEffect(() => {
-    console.log(solvedPuzzles);
     if (
       solvedPuzzles.filter((solvedPuzzle) => solvedPuzzle.id === puzzle.id)
         .length
@@ -197,12 +197,36 @@ export default function SolvePuzzle() {
                     <div className="flex flex-col gap-4" key={language}>
                       {solutions.map((solution) => {
                         return (
-                          <div
+                          <Link
+                            to={`/users/${
+                              puzzle.solvers.find(
+                                (solver) => solution.user_id === solver.id,
+                              )?.id
+                            }`}
                             className="flex flex-col gap-2"
                             key={solution.id}
                           >
+                            <div className="flex items-center gap-2 pb-2">
+                              <img
+                                src={blo(
+                                  puzzle.solvers.find(
+                                    (solver) => solution.user_id === solver.id,
+                                  )?.username as `0x${string}`,
+                                )}
+                                className="w-8 h-8 rounded-full"
+                                role="button"
+                                tabIndex={0}
+                              />
+                              <span className="text-lg logo">
+                                {
+                                  puzzle.solvers.find(
+                                    (solver) => solution.user_id === solver.id,
+                                  )?.username
+                                }
+                              </span>
+                            </div>
                             <span className="text-sm">{language}:</span>
-                            <code className="text-xs whitespace-pre-wrap bg-gray-800 p-2 rounded-lg overflow-x-auto">
+                            <code className="select-none text-xs whitespace-pre-wrap bg-gray-800 p-2 rounded-lg overflow-x-auto">
                               {solution.source_code}
                             </code>
                             <div className="flex items-center gap-2">
@@ -219,7 +243,7 @@ export default function SolvePuzzle() {
                               </span>
                             </div>
                             <div className="divider"></div>
-                          </div>
+                          </Link>
                         );
                       })}
                     </div>

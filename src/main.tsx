@@ -25,6 +25,11 @@ import SolvePuzzle, {
   action as solvePuzzleAction,
 } from "./pages/Puzzle";
 import Social from "./pages/Social";
+import OtherUserDashboard, {
+  loader as otherUserLoader,
+  action as otherUserAction,
+} from "./pages/OtherUserDashboard";
+import OtherUserStats from "./pages/OtherUserStats";
 
 const { router } = typesafeBrowserRouter([
   {
@@ -102,6 +107,32 @@ const { router } = typesafeBrowserRouter([
         element: <SolvePuzzle />,
         loader: solvePuzzleLoader,
         action: solvePuzzleAction,
+      },
+      {
+        path: "users/:userId",
+        element: <OtherUserDashboard />,
+        loader: otherUserLoader,
+        action: otherUserAction,
+        children: [
+          {
+            index: true,
+            element: <OtherUserStats />,
+          },
+          {
+            path: "completed_solutions",
+            element: <CompletedSolutions />,
+            loader: completedSolutionsLoader,
+          },
+          {
+            path: "created_puzzles",
+            element: <CreatedPuzzles />,
+            loader: createdPuzzlesLoader,
+          },
+          {
+            path: "social",
+            element: <Social />,
+          },
+        ],
       },
     ],
   },

@@ -74,10 +74,10 @@ export default function Dashboard() {
                 <span className="text-sm">
                   Remember: A puzzle a day keeps impostor syndrome at bay.
                 </span>
-                <div className="pt-2 text-sm">
+                <div className="pt-4 text-sm">
                   <Link to="/puzzles/">
-                    <button className="btn btn-outline btn-primary btn-xs">
-                      SOLVE A PUZZLE
+                    <button className="btn btn-outline btn-primary btn-sm">
+                      Solve a puzzle
                     </button>
                   </Link>
                 </div>

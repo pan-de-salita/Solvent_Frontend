@@ -37,4 +37,5 @@ export interface Puzzle {
   updated_at: string;
   solutions_by_languages: SolutionsByLanguage;
   stats: Stats;
+  solvers: MiniUser[];
 }

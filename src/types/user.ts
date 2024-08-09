@@ -44,6 +44,14 @@ interface Follower {
   most_used_language: string;
 }
 
+interface ActiveRelationship {
+  id: number;
+  follower_id: number;
+  followed_id: number;
+  created_at: Date;
+  updated_at: Date;
+}
+
 interface CurrentUser {
   id: number;
   username: string;
@@ -56,12 +64,30 @@ interface CurrentUser {
   solved_puzzles: Puzzle[];
   solutions_by_puzzle: Record<number, CompletedSolution[]>;
   solutions_by_language: Record<string, number>;
-  completed_solutions: Record<string, CompletedSolution[]>;
   languages: Language[];
   created_puzzles: Puzzle[];
   stats: UserStats;
+  active_relationships: ActiveRelationship[];
 }
 
 export interface User {
   current_user: CurrentUser;
+}
+
+export interface OtherUser {
+  id: number;
+  username: string;
+  email: string;
+  created_at: Date;
+  updated_at: Date;
+  following: Following[];
+  followers: Follower[];
+  solutions: CompletedSolution[];
+  solved_puzzles: Puzzle[];
+  solutions_by_puzzle: Record<number, CompletedSolution[]>;
+  solutions_by_language: Record<string, number>;
+  languages: Language[];
+  created_puzzles: Puzzle[];
+  stats: UserStats;
+  active_relationships: ActiveRelationship[];
 }
