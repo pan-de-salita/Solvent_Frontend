@@ -132,7 +132,6 @@ export async function action({ request }: { request: Request }) {
 export default function OtherUserDashboard() {
   const { data } = useOutletContext() as { data: User };
   const { otherUser } = useLoaderData() as { otherUser: OtherUser };
-  const location = useLocation();
 
   return (
     <>
@@ -209,12 +208,8 @@ export default function OtherUserDashboard() {
                         name="relationship_id"
                         defaultValue={
                           data.current_user.active_relationships.find(
-                            (active_relationship) => {
-                              console.log(active_relationship);
-                              return (
-                                active_relationship.followed_id === otherUser.id
-                              );
-                            },
+                            (active_relationship) =>
+                              active_relationship.followed_id === otherUser.id,
                           )?.id || ""
                         }
                       />
