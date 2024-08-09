@@ -48,8 +48,8 @@ export default function CreatedPuzzles() {
               {
                 puzzData
                   .map((puzz) => puzz.solutions_by_languages)
-                  .flat()
-                  .map((solByLang) => Object.keys(solByLang)).length
+                  .map((solByLang) => Object.keys(solByLang))
+                  .flat().length
               }
             </span>
             <span className="text-sm">
