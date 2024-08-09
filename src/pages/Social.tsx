@@ -43,7 +43,6 @@ export default function Social() {
                   <Link to={`/users/${user.id}`}>
                     <div key={user.username}>
                       {" "}
-                      {/* Added key here */}
                       <div className="w-full flex flex-col md:flex-row justify-between md:items-center">
                         <div className="flex items-center gap-2 md:gap-4">
                           <img

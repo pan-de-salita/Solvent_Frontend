@@ -1,7 +1,14 @@
-import { Form, Link, redirect, useLoaderData } from "react-router-dom";
+import {
+  Form,
+  Link,
+  redirect,
+  useLoaderData,
+  useOutletContext,
+} from "react-router-dom";
 import { Puzzle } from "../types/puzzle";
 import { useEffect, useState } from "react";
 import { blo } from "blo";
+import { User } from "../types/user";
 
 interface Language {
   id: number;
@@ -140,12 +147,14 @@ export async function action({ request }: { request: Request }) {
 }
 
 export default function SolvePuzzle() {
+  const { data } = useOutletContext() as { data: User };
   const { puzzle, solvedPuzzles, langData } = useLoaderData() as {
     puzzle: Puzzle;
     solvedPuzzles: Puzzle[];
     langData: Language[];
   };
   const [enableSolutions, setEnableSolutions] = useState(false);
+  const [submittedSolution, setSubmittedSolution] = useState(false);
 
   useEffect(() => {
     if (
@@ -154,7 +163,9 @@ export default function SolvePuzzle() {
     ) {
       setEnableSolutions(true);
     }
-  }, []);
+
+    setSubmittedSolution(false);
+  }, [submittedSolution]);
 
   return (
     <div className="overflow-clip w-full h-full p-4 lg:px-9 flex flex-col md:flex-row md:justify-between">
@@ -179,10 +190,12 @@ export default function SolvePuzzle() {
           <div className="w-full relative bg-gray-400 h-full rounded-lg shadow-sm ">
             <div className="bg-gray-800 h-8 rounded-t-lg flex items-center px-4 w-full gap-2">
               <span
-                className={`${enableSolutions || !Object.entries(puzzle.solutions_by_languages).length ? "text-gray-100" : "text-red-500"} text-sm font-bold`}
+                className={`${enableSolutions || data.current_user.solved_puzzles.some((puzz) => puzz.id === puzzle.id) ? "text-gray-100" : "text-red-500"} text-sm font-bold`}
               >
                 {enableSolutions ||
-                !Object.entries(puzzle.solutions_by_languages).length
+                data.current_user.solved_puzzles.some(
+                  (puzz) => puzz.id === puzzle.id,
+                )
                   ? "Solutions"
                   : "Solve the puzzle to unlock others' solutions"}
               </span>
@@ -198,10 +211,17 @@ export default function SolvePuzzle() {
                       {solutions.map((solution) => {
                         return (
                           <Link
-                            to={`/users/${
+                            to={`${
                               puzzle.solvers.find(
                                 (solver) => solution.user_id === solver.id,
-                              )?.id
+                              )?.id === data.current_user.id
+                                ? "/dashboard/"
+                                : `/users/${
+                                    puzzle.solvers.find(
+                                      (solver) =>
+                                        solution.user_id === solver.id,
+                                    )?.id
+                                  }`
                             }`}
                             className="flex flex-col gap-2"
                             key={solution.id}
@@ -255,12 +275,13 @@ export default function SolvePuzzle() {
               method="post"
               id="solution-form"
               className="w-full h-full flex flex-col gap-4 rounded-lg p-4 bg-gray-800"
+              onSubmit={() => setSubmittedSolution(true)}
             >
               <h1 className="logo text-xl text-gray-100">Your Attempt</h1>
               <input type="hidden" name="puzzle_id" defaultValue={puzzle.id} />
               <select
                 name="language_id"
-                className="max-h-9 border border-gray-200 rounded-lg p-2 text-sm bg-transparent outline-none text-gray-100"
+                className="max-h-9 border border-gray-200 rounded-lg p-2 text-sm bg-transparent outline-none"
               >
                 {langData.map((language) => (
                   <option key={language.id} value={language.id}>
