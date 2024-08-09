@@ -168,7 +168,9 @@ export default function SolvePuzzle() {
           </div>
           <div className="bg-gray-400 h-full rounded-lg shadow-sm">
             <div className="bg-gray-800 h-8 rounded-t-lg flex items-center px-4">
-              <span className="text-sm font-bold">Instructions</span>
+              <span className="text-gray-100 text-sm font-bold">
+                Instructions
+              </span>
             </div>
             <p className="text-gray-100 max-h-[25.75rem] p-4 text-sm whitespace-pre-wrap overflow-auto">
               {puzzle.description}
@@ -176,7 +178,13 @@ export default function SolvePuzzle() {
           </div>
           <div className="w-full relative bg-gray-400 h-full rounded-lg shadow-sm ">
             <div className="bg-gray-800 h-8 rounded-t-lg flex items-center px-4 w-full gap-2">
-              <span className="text-sm font-bold">Solutions</span>
+              <span
+                className={`${enableSolutions ? "text-gray-100" : "text-red-500"} text-sm font-bold`}
+              >
+                {enableSolutions
+                  ? "Solutions"
+                  : "Solve the puzzle to unlock others' solutions"}
+              </span>
             </div>
             <div
               className={`text-gray-100 ${Object.entries(puzzle.solutions_by_languages).length ? "h-[25.75rem]" : ""} ${enableSolutions ? "" : "blur-sm"} px-4 pt-4 text-sm whitespace-pre-wrap overflow-auto`}
