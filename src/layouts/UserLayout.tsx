@@ -85,9 +85,9 @@ export default function UserLayout() {
             <div className="flex items-center justify-center gap-1 text-red-500">
               <FontAwesomeIcon
                 icon={faVial}
-                className="hidden md:block rounded-md border-2 border-red-500 p-1 text-xs"
+                className="hidden md:block rounded-md border-2 border-red-500 text-red-500 p-1 text-xs"
               />
-              <span className="logo text-2xl">solvent</span>
+              <span className="logo text-2xl text-red-500">solvent</span>
               <span className="pl-1 pt-1 logo text-lg text-gray-200">
                 v0.1.2
               </span>
@@ -142,7 +142,7 @@ export default function UserLayout() {
           <li>
             <Link
               to="/dashboard/"
-              className={`${location.pathname.includes("/dashboard/") ? "border-red-500 pointer-events-none" : "border-transparent"} border-4 border-t-0 border-r-0 border-b-0 rounded-none flex justify-start items-center`}
+              className={`${location.pathname.includes("/dashboard/") ? "border-red-500" : "border-transparent"} border-4 border-t-0 border-r-0 border-b-0 rounded-none flex justify-start items-center`}
             >
               <FontAwesomeIcon
                 icon={faBrain}
@@ -160,7 +160,7 @@ export default function UserLayout() {
           <li>
             <Link
               to="/puzzles/"
-              className={`${location.pathname.includes("/puzzles/") ? "border-red-500 pointer-events-none" : "border-transparent"} border-4 border-t-0 border-r-0 border-b-0 rounded-none flex justify-start items-center`}
+              className={`${location.pathname.includes("/puzzles/") ? "border-red-500" : "border-transparent"} border-4 border-t-0 border-r-0 border-b-0 rounded-none flex justify-start items-center`}
             >
               <FontAwesomeIcon
                 icon={faMicroscope}

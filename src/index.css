@@ -5,10 +5,14 @@
 * {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
-  color: #EFEFEF;
 }
 
 .logo {
   font-family: "Kanit", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.code {
+  font-family: "Fira Code", monospace;
   font-optical-sizing: auto;
 }

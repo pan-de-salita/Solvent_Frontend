@@ -20,7 +20,10 @@ import Puzzles, {
   loader as allPuzzlesLoader,
   action as createPuzzleAction,
 } from "./pages/Puzzles";
-import SolvePuzzle, { loader as solvePuzzleLoader } from "./pages/Puzzle";
+import SolvePuzzle, {
+  loader as solvePuzzleLoader,
+  action as solvePuzzleAction,
+} from "./pages/Puzzle";
 
 const { router } = typesafeBrowserRouter([
   {
@@ -93,6 +96,7 @@ const { router } = typesafeBrowserRouter([
         path: "puzzles/:puzzleId",
         element: <SolvePuzzle />,
         loader: solvePuzzleLoader,
+        action: solvePuzzleAction,
       },
     ],
   },

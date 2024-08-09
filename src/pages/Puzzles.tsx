@@ -153,7 +153,7 @@ export default function Puzzles() {
                 </div>
                 <Form
                   method="post"
-                  id="contact-form"
+                  id="puzzle-form"
                   className="w-full flex flex-col gap-4 bg-gradient-to-r from-gray-900 to-[#161C2A] rounded-r-lg p-4"
                 >
                   <h1 className="logo text-xl">Create a Puzzle</h1>
