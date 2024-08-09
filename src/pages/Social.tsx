@@ -38,43 +38,49 @@ export default function Social() {
           <div className="divider divider-horizontal"></div>
           <div className="w-full flex flex-col gap-4">
             {usersToShow.length > 0 && // Changed to > 0 to avoid rendering if empty
-              usersToShow.map((user) => {
-                return (
-                  <Link to={`/users/${user.id}`}>
-                    <div key={user.username}>
-                      {" "}
-                      <div className="w-full flex flex-col md:flex-row justify-between md:items-center">
-                        <div className="flex items-center gap-2 md:gap-4">
-                          <img
-                            alt={user.username}
-                            src={blo(user.username as `0x${string}`)}
-                            className="w-8 h-8 rounded-full"
-                            tabIndex={0}
-                          />
-                          <span className="text-gray-100 text-md logo">
-                            {user.username}
-                          </span>
-                        </div>
-                        {user.most_used_language ? (
-                          <div className="flex items-center gap-2">
-                            <span className="text-gray-100 text-sm md:text-md logo">
-                              Most Used Language:
-                            </span>
-                            <i
-                              className={`devicon-${user.most_used_language.toLowerCase()}-plain text-gray-100 text-md p-2 bg-gray-900 rounded-lg`}
-                            ></i>
-                          </div>
-                        ) : (
-                          <span className="text-gray-100 text-sm md:text-md logo">
-                            No puzzles solved yet.
-                          </span>
-                        )}
-                      </div>
-                      <div className="divider m-0"></div>
+              usersToShow.map((user) => (
+                <Link key={user.id} to={`/users/${user.id}`}>
+                  <div className="w-full flex flex-col md:flex-row justify-between md:items-center">
+                    <div className="flex items-center gap-2 md:gap-4">
+                      <img
+                        key={`${user.id}-avatar`}
+                        alt={user.username}
+                        src={blo(user.username as `0x${string}`)}
+                        className="w-8 h-8 rounded-full"
+                        tabIndex={0}
+                      />
+                      <span
+                        key={`${user.id}-username`}
+                        className="text-gray-100 text-md logo"
+                      >
+                        {user.username}
+                      </span>
                     </div>
-                  </Link>
-                );
-              })}
+                    {user.most_used_language ? (
+                      <div
+                        key={`${user.id}-language`}
+                        className="flex items-center gap-2"
+                      >
+                        <span className="text-gray-100 text-sm md:text-md logo">
+                          Most Used Language:
+                        </span>
+                        <i
+                          key={`${user.id}-language-icon`}
+                          className={`devicon-${user.most_used_language.toLowerCase()}-plain text-gray-100 text-md p-2 bg-gray-900 rounded-lg`}
+                        ></i>
+                      </div>
+                    ) : (
+                      <span
+                        key={`${user.id}-no-language`}
+                        className="text-gray-100 text-sm md:text-md logo"
+                      >
+                        No puzzles solved yet.
+                      </span>
+                    )}
+                  </div>
+                  <div className="divider m-0"></div>
+                </Link>
+              ))}
           </div>
         </div>
       </div>
