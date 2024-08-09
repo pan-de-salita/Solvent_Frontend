@@ -5,6 +5,7 @@ import {
   Outlet,
   redirect,
   useLoaderData,
+  useLocation,
 } from "react-router-dom";
 import { User } from "../types/user";
 import { useAuth } from "../contexts/AuthContext";
@@ -51,6 +52,7 @@ export async function loader() {
 export default function UserLayout() {
   const { data } = useLoaderData() as { data: User };
   const { isAuthorized } = useAuth();
+  const location = useLocation();
 
   return isAuthorized() && data ? (
     <div className="drawer bg-gray-500">
@@ -135,17 +137,20 @@ export default function UserLayout() {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-gray-800 min-h-full w-80 p-4">
+        <ul className="menu bg-gray-800 min-h-full w-80">
           {/* Sidebar content here */}
           <li>
             <Link
               to="/dashboard/"
-              className={`flex justify-start items-center`}
+              className={`${location.pathname.includes("/dashboard/") ? "border-red-500 pointer-events-none" : "border-transparent"} border-4 border-t-0 border-r-0 border-b-0 rounded-none flex justify-start items-center`}
             >
-              <FontAwesomeIcon icon={faBrain} className="text-3xl pr-3" />
+              <FontAwesomeIcon
+                icon={faBrain}
+                className="text-gray-100 text-3xl pr-3"
+              />
               <div className="flex flex-col items-start">
-                <span className="text-lg logo">Home</span>
-                <span className="text-xs font-medium">
+                <span className="text-lg logo text-gray-100">Home</span>
+                <span className="text-xs font-medium text-gray-100">
                   Report back to see your stats and progress.
                 </span>
               </div>
@@ -153,11 +158,17 @@ export default function UserLayout() {
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="/puzzles/" className={`flex justify-start items-center`}>
-              <FontAwesomeIcon icon={faMicroscope} className="text-3xl pr-3" />
+            <Link
+              to="/puzzles/"
+              className={`${location.pathname.includes("/puzzles/") ? "border-red-500 pointer-events-none" : "border-transparent"} border-4 border-t-0 border-r-0 border-b-0 rounded-none flex justify-start items-center`}
+            >
+              <FontAwesomeIcon
+                icon={faMicroscope}
+                className="text-3xl pr-3 text-gray-100"
+              />
               <div className="flex flex-col items-start">
-                <span className="text-lg logo">Puzzles</span>
-                <span className="text-xs font-medium">
+                <span className="text-lg logo text-gray-100">Puzzles</span>
+                <span className="text-xs font-medium text-gray-100">
                   Complete challenging puzzles. Retrain to hone technique.
                 </span>
               </div>

@@ -132,7 +132,7 @@ export default function Puzzles() {
                 <span className="text-lg text-blue-500 logo">
                   Learn better by building?
                 </span>
-                <span className="text-sm">
+                <span className="text-gray-100 text-sm">
                   Check out the{" "}
                   <span className="font-bold">Build Your Own X</span> repo.
                 </span>
@@ -141,7 +141,7 @@ export default function Puzzles() {
           </div>
           <div className="flex-1">
             <div className="w-full flex flex-col gap-5">
-              <div className="flex flex-col gap-1 md:gap-0 md:flex-row w-full p-1 bg-gradient-to-r from-[#CF4B32] to-[#646EE4] rounded-lg">
+              <div className="shadow-sm flex flex-col gap-1 md:gap-0 md:flex-row w-full p-1 bg-gradient-to-r from-[#CF4B32] to-[#646EE4] rounded-lg">
                 <div className="flex flex-col gap-3 lg:gap-6 text-gray-100 p-4 w-full md:w-[65%] bg-gradient-to-r from-[#763428] to-[#B74630] rounded-l-lg">
                   <h1 className="logo text-4xl">
                     Help others fail again, but fail better.
@@ -202,7 +202,7 @@ export default function Puzzles() {
                       </div>
                       <div className="flex flex-col lg:flex-row">
                         <div className="lg:w-full lg:max-w-3xl flex flex-col items-start gap-4 pb-4">
-                          <p className="text-sm whitespace-pre-wrap">
+                          <p className="text-gray-100 text-sm whitespace-pre-wrap">
                             {puzz.description}
                           </p>
                         </div>
@@ -219,7 +219,7 @@ export default function Puzzles() {
                                   >
                                     <div className="py-1">
                                       <i
-                                        className={`devicon-${language.toLowerCase()}-plain text-xl p-2 bg-gray-900 rounded-lg`}
+                                        className={`devicon-${language.toLowerCase()}-plain text-xl p-2 text-gray-100 bg-gray-900 rounded-lg`}
                                       ></i>
                                     </div>
                                   </div>

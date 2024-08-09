@@ -84,7 +84,7 @@ export default function CreatedPuzzles() {
                   </div>
                   <div className="flex flex-col lg:flex-row">
                     <div className="lg:w-[40rem] flex flex-col items-start gap-4 pb-4">
-                      <span className="text-sm whitespace-pre-wrap">
+                      <span className="text-gray-100 text-sm whitespace-pre-wrap">
                         {puzz.description}
                       </span>
                       <label className="swap py-2">
@@ -110,7 +110,7 @@ export default function CreatedPuzzles() {
                               >
                                 <div className="py-1">
                                   <i
-                                    className={`devicon-${language.toLowerCase()}-plain text-xl p-2 bg-gray-900 rounded-lg`}
+                                    className={`devicon-${language.toLowerCase()}-plain text-gray-100 text-xl p-2 bg-gray-900 rounded-lg`}
                                   ></i>
                                 </div>
                               </div>
