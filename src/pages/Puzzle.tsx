@@ -223,7 +223,7 @@ export default function SolvePuzzle() {
                                     )?.id
                                   }`
                             }`}
-                            className="flex flex-col gap-2"
+                            className={`flex flex-col gap-2 ${enableSolutions ? "" : "pointer-events-none"}`}
                             key={solution.id}
                           >
                             <div className="flex items-center gap-2 pb-2">
