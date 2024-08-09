@@ -223,7 +223,7 @@ export default function SolvePuzzle() {
           <div className="max-h-[75vh] md:max-h-screen h-auto md:h-full rounded-lg bg-gradient-to-l from-[#CF4B32] to-gray-800 p-1">
             <Form
               method="post"
-              id="contact-form"
+              id="solution-form"
               className="w-full h-full flex flex-col gap-4 rounded-lg p-4 bg-gray-800"
             >
               <h1 className="logo text-xl">Your Attempt</h1>

@@ -83,7 +83,7 @@ export default function CreatedPuzzles() {
                     </span>
                   </div>
                   <div className="flex flex-col lg:flex-row">
-                    <div className="lg:w-[40rem] flex flex-col items-start gap-4 pb-4">
+                    <div className="lg:min-w-[40rem] flex flex-col items-start gap-4 pb-4">
                       <span className="text-gray-100 text-sm whitespace-pre-wrap">
                         {puzz.description}
                       </span>
