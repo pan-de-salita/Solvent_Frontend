@@ -89,7 +89,7 @@ export default function UserLayout() {
               />
               <span className="logo text-2xl text-red-500">solvent</span>
               <span className="pl-1 pt-1 logo text-lg text-gray-200">
-                v0.1.2
+                powered by Judge0
               </span>
             </div>
           </div>
