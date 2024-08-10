@@ -47,7 +47,8 @@ export default function Stats() {
                       Total Languages Used: {data.current_user.languages.length}
                     </span>
                     <span className="text-sm">
-                      Most Used: {data.current_user.stats.most_used_language}
+                      Most Used:{" "}
+                      {data.current_user.stats.most_used_language || "null"}
                     </span>
                   </div>
                 </div>

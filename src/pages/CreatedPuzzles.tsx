@@ -39,7 +39,7 @@ export default function CreatedPuzzles() {
 
   return (
     <>
-      <div className="px-4 md:px-0 w-full mx-auto flex justify-center text-gray-100">
+      <div className="md:min-h-[29rem] px-4 md:px-0 w-full mx-auto flex justify-center text-gray-100">
         <div className="bg-gray-400 rounded-lg md:mx-4 p-4 w-full max-w-5xl flex shadow-sm">
           <div className="min-w-[10rem] hidden md:flex flex-col gap-1">
             <h2 className="text-lg logo">Quick facts</h2>
@@ -68,6 +68,9 @@ export default function CreatedPuzzles() {
           </div>
           <div className="divider divider-horizontal"></div>
           <div className="w-full flex flex-col gap-6">
+            {puzzData.length === 0 && (
+              <span className="text-gray-100 text-sm">No data to show.</span>
+            )}{" "}
             {puzzData.map((puzz) => {
               return (
                 <div className="flex flex-col gap-4" key={puzz.id}>
