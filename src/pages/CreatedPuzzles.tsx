@@ -27,7 +27,7 @@ export async function loader() {
   const authToken = localStorage.getItem("Authorization");
 
   if (!authToken) {
-    return redirect("/login");
+    return redirect("/");
   }
 
   const puzzData = await getCreatedPuzzles(JSON.parse(authToken));

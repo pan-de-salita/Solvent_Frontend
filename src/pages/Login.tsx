@@ -24,7 +24,7 @@ async function login(credentials: { email: string; password: string }) {
     );
 
     if (!response.ok) {
-      return redirect("/login");
+      return redirect("/");
     }
 
     const authToken = response.headers.get("Authorization");

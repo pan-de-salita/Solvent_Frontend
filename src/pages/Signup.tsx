@@ -34,7 +34,7 @@ async function signup(credentials: {
       },
     );
 
-    return !response.ok ? redirect("/signup") : redirect("/login");
+    return !response.ok ? redirect("/signup") : redirect("/");
   } catch (error) {
     return error as Error;
   }

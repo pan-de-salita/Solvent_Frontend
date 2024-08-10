@@ -36,7 +36,7 @@ export async function loader({ params }: { params: any }) {
   const authToken = localStorage.getItem("Authorization");
 
   if (!authToken) {
-    return redirect("/login");
+    return redirect("/");
   }
 
   const otherUser = await getUser(

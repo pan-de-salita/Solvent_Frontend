@@ -21,11 +21,11 @@ export async function action() {
       console.log(data);
 
       if (response.ok) {
-        return redirect("/login");
+        return redirect("/");
       }
     }
   } catch (error) {
     console.log(error);
-    return redirect("/login");
+    return redirect("/");
   }
 }

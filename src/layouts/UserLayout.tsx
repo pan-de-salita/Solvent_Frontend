@@ -42,7 +42,7 @@ export async function loader() {
   const authToken = localStorage.getItem("Authorization");
 
   if (!authToken) {
-    return redirect("/login");
+    return redirect("/");
   }
 
   const data = await getCurrentUser(JSON.parse(authToken));
