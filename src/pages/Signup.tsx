@@ -141,7 +141,7 @@ export default function Signup() {
             </button>
           </div>
           <span className="text-xs text-gray-100">
-            <Link to="/login" className="underline">
+            <Link to="/" className="underline">
               Log in
             </Link>{" "}
             if you already have an account.
