@@ -51,7 +51,7 @@ const { router } = typesafeBrowserRouter([
     action: signupAction,
   },
   {
-    path: "login",
+    path: "/login",
     element: (
       <AuthProvider>
         <Login />
