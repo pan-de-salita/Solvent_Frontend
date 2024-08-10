@@ -178,6 +178,6 @@ export default function UserLayout() {
       </div>
     </div>
   ) : (
-    <Navigate to="/login" replace={true} />
+    <Navigate to="/" replace={true} />
   );
 }
