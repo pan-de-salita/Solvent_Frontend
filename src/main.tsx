@@ -118,20 +118,6 @@ const { router } = typesafeBrowserRouter([
             index: true,
             element: <OtherUserStats />,
           },
-          {
-            path: "completed_solutions",
-            element: <CompletedSolutions />,
-            loader: completedSolutionsLoader,
-          },
-          {
-            path: "created_puzzles",
-            element: <CreatedPuzzles />,
-            loader: createdPuzzlesLoader,
-          },
-          {
-            path: "social",
-            element: <Social />,
-          },
         ],
       },
     ],
