@@ -154,18 +154,14 @@ export default function SolvePuzzle() {
     langData: Language[];
   };
   const [enableSolutions, setEnableSolutions] = useState(false);
-  const [submittedSolution, setSubmittedSolution] = useState(false);
 
   useEffect(() => {
-    if (
-      solvedPuzzles.filter((solvedPuzzle) => solvedPuzzle.id === puzzle.id)
-        .length
-    ) {
+    if (solvedPuzzles.some((solvedPuzzle) => solvedPuzzle.id === puzzle.id)) {
       setEnableSolutions(true);
+    } else {
+      setEnableSolutions(false);
     }
-
-    setSubmittedSolution(false);
-  }, [submittedSolution]);
+  }, [solvedPuzzles, puzzle.id]);
 
   return (
     <div className="overflow-clip w-full h-full p-4 lg:px-9 flex flex-col md:flex-row md:justify-between">
@@ -275,7 +271,6 @@ export default function SolvePuzzle() {
               method="post"
               id="solution-form"
               className="w-full h-full flex flex-col gap-4 rounded-lg p-4 bg-gray-800"
-              onSubmit={() => setSubmittedSolution(true)}
             >
               <h1 className="logo text-xl text-gray-100">Your Attempt</h1>
               <input type="hidden" name="puzzle_id" defaultValue={puzzle.id} />

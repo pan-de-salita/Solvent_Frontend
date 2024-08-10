@@ -201,7 +201,7 @@ export default function Puzzles() {
                         </span>
                       </div>
                       <div className="flex flex-col lg:flex-row">
-                        <div className="lg:w-full lg:max-w-3xl flex flex-col items-start gap-4 pb-4">
+                        <div className="lg:min-w-[47rem] lg:max-w-3xl flex flex-col items-start gap-4 pb-4">
                           <p className="text-gray-100 text-sm whitespace-pre-wrap">
                             {puzz.description}
                           </p>
@@ -219,7 +219,7 @@ export default function Puzzles() {
                                   >
                                     <div className="py-1">
                                       <i
-                                        className={`devicon-${language.toLowerCase()}-plain text-xl p-2 text-gray-100 bg-gray-900 rounded-lg`}
+                                        className={`devicon-${language.toLowerCase() === "c++" ? "cplusplus" : language.toLowerCase()}-plain text-xl p-2 text-gray-100 bg-gray-900 rounded-lg`}
                                       ></i>
                                     </div>
                                   </div>

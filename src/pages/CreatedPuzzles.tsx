@@ -113,7 +113,7 @@ export default function CreatedPuzzles() {
                               >
                                 <div className="py-1">
                                   <i
-                                    className={`devicon-${language.toLowerCase()}-plain text-gray-100 text-xl p-2 bg-gray-900 rounded-lg`}
+                                    className={`devicon-${language.toLowerCase() === "c++" ? "cplusplus" : language.toLowerCase()}-plain text-gray-100 text-xl p-2 bg-gray-900 rounded-lg`}
                                   ></i>
                                 </div>
                               </div>
