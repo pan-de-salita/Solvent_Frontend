@@ -278,7 +278,7 @@ export default function SolvePuzzle() {
               <input type="hidden" name="puzzle_id" defaultValue={puzzle.id} />
               <select
                 name="language_id"
-                className="max-h-9 border border-gray-200 rounded-lg p-2 text-sm bg-transparent outline-none"
+                className="max-h-9 border border-gray-200 rounded-lg p-2 text-sm bg-transparent text-gray-100 outline-none"
               >
                 {langData.map((language) => (
                   <option key={language.id} value={language.id}>
