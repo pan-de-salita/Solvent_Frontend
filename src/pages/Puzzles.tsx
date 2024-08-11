@@ -186,7 +186,10 @@ export default function Puzzles() {
                   </div>
                 </Form>
               </div>
-              <span className="logo">{allPuzzData.length} puzzles found.</span>
+              <span className="logo">
+                {allPuzzData.length}{" "}
+                {allPuzzData.length === 1 ? "puzzle" : "puzzles"} found.
+              </span>
               {allPuzzData.map((puzz) => {
                 return (
                   <Link to={`/puzzles/${puzz.id}`} key={puzz.id}>
