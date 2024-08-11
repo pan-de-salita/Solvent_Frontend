@@ -66,7 +66,7 @@ export default function Social() {
                         </span>
                         <i
                           key={`${user.id}-language-icon`}
-                          className={`devicon-${user.most_used_language.toLowerCase()}-plain text-gray-100 text-md p-2 bg-gray-900 rounded-lg`}
+                          className={`devicon-${user.most_used_language.toLowerCase() === "c++" ? "cplusplus" : user.most_used_language.toLowerCase()}-plain text-gray-100 text-md p-2 bg-gray-900 rounded-lg`}
                         ></i>
                       </div>
                     ) : (

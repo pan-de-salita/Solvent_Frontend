@@ -201,13 +201,13 @@ export default function Puzzles() {
                         </span>
                       </div>
                       <div className="flex flex-col lg:flex-row">
-                        <div className="lg:min-w-[47rem] lg:max-w-3xl flex flex-col items-start gap-4 pb-4">
+                        <div className="flex-1 flex flex-col items-start gap-4 pb-4">
                           <p className="text-gray-100 text-sm whitespace-pre-wrap">
                             {puzz.description}
                           </p>
                         </div>
                         <div className="divider divider-horizontal ml-1 mr-4"></div>
-                        <div className="lg:min-w-26 flex flex-col gap-2 min-w-[8rem]">
+                        <div className="flex flex-col gap-2 min-w-[8rem] md:max-w-[8rem]">
                           <div className="flex justify-start flex-wrap gap-1">
                             {Object.entries(puzz.solutions_by_languages).map(
                               ([language, solutions]) => {
