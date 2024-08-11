@@ -75,10 +75,10 @@ export default function CompletedSolutions() {
 
                       return (
                         <div className="flex flex-col gap-2" key={solution.id}>
-                          <span className="text-sm">
+                          <span className="text-sm tex-gray-100">
                             {language?.name ?? "Unknown Language"}:
                           </span>
-                          <code className="w-content text-xs whitespace-pre bg-gray-800 p-2 rounded-lg overflow-x-auto">
+                          <code className="w-content text-xs whitespace-pre-wrap bg-gray-800 p-2 rounded-lg overflow-x-auto">
                             {solution.source_code}
                           </code>
                           <span className="text-sm text-gray-200 pb-3">

@@ -131,7 +131,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     </React.StrictMode>
     <footer className="footer footer-center bg-gray-500 p-4">
       <aside>
-        <p className="logo text-sm">
+        <p className="logo text-sm text-gray-100">
           Copyleft 🄯 {new Date().getFullYear()} - No rights reserved by Solvent
         </p>
       </aside>

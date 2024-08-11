@@ -157,7 +157,9 @@ export default function Puzzles() {
                   id="puzzle-form"
                   className="w-full flex flex-col gap-4 bg-gradient-to-r from-gray-900 to-[#161C2A] rounded-r-lg p-4"
                 >
-                  <h1 className="logo text-xl">Create a Puzzle</h1>
+                  <h1 className="logo text-xl text-gray-100">
+                    Create a Puzzle
+                  </h1>
                   <input
                     placeholder="Title"
                     type="text"
