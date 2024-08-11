@@ -41,7 +41,7 @@ export default function CreatedPuzzles() {
     <>
       <div className="md:min-h-[29rem] px-4 md:px-0 w-full mx-auto flex justify-center text-gray-100">
         <div className="bg-gray-400 rounded-lg md:mx-4 p-4 w-full max-w-5xl flex flex-col gap-4 md:flex-row md:gap-0 shadow-sm">
-          <div className="min-w-[10rem] hidden md:flex flex-col gap-1">
+          <div className="min-w-[10rem] flex flex-col gap-1">
             <h2 className="text-lg logo">Quick facts</h2>
             <span className="text-sm">
               Languages Used:{" "}
