@@ -179,7 +179,7 @@ export default function SolvePuzzle() {
                 Instructions
               </span>
             </div>
-            <p className="text-gray-100 max-h-[25.75rem] p-4 text-sm whitespace-pre-wrap overflow-auto">
+            <p className="text-gray-100 max-h-64 max-h-[25.75rem] p-4 text-sm whitespace-pre-wrap overflow-auto">
               {puzzle.description}
             </p>
           </div>
