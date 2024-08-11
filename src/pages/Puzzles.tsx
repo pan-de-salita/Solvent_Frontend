@@ -121,7 +121,7 @@ export default function Puzzles() {
               />
             </Form>
             <a
-              href="https://github.com/codecrafters-io/build-your-own-x"
+              href="https://judge0.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
