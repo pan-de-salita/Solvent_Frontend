@@ -179,7 +179,7 @@ export default function SolvePuzzle() {
                 Instructions
               </span>
             </div>
-            <p className="text-gray-100 max-h-64 max-h-[25.75rem] p-4 text-sm whitespace-pre-wrap overflow-auto">
+            <p className="text-gray-100 max-h-[22.75rem] p-4 text-sm whitespace-pre-wrap overflow-auto">
               {puzzle.description}
             </p>
           </div>
@@ -197,7 +197,7 @@ export default function SolvePuzzle() {
               </span>
             </div>
             <div
-              className={`text-gray-100 ${Object.entries(puzzle.solutions_by_languages).length ? "max-h-64 md:min-h-[25.75rem]" : ""} ${enableSolutions ? "" : "blur-sm"} px-4 pt-4 text-sm whitespace-pre-wrap overflow-auto`}
+              className={`text-gray-100 ${Object.entries(puzzle.solutions_by_languages).length ? "sm:max-h-64 md:max-h-[21.5rem] lg:max-h-[22.95rem]" : ""} ${enableSolutions ? "" : "blur-sm"} px-4 pt-4 text-sm whitespace-pre-wrap overflow-auto`}
             >
               {Object.entries(puzzle.solutions_by_languages)
                 .reverse()
@@ -268,7 +268,7 @@ export default function SolvePuzzle() {
           </div>
         </div>
         <div className="flex-1 w-full min-h-96 h-auto md:h-[calc(100vh-164px)]">
-          <div className="md:max-h-screen h-auto md:h-full rounded-lg bg-gradient-to-l from-[#CF4B32] to-gray-800 p-1">
+          <div className="md:max-h-screen h-auto md:h-full rounded-lg bg-gradient-to-r from-[#CF4B32] to-gray-800 p-1">
             <Form
               method="post"
               id="solution-form"
