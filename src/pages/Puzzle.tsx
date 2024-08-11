@@ -166,7 +166,7 @@ export default function SolvePuzzle() {
   return (
     <div className="overflow-clip w-full h-full p-4 lg:px-9 flex flex-col md:flex-row md:justify-between">
       <div className="flex flex-col md:flex-row min-h-96 h-auto md:h-[calc(100vh-164px)] w-full gap-4">
-        <div className="w-full md:w-5/12 max-h-[75vh] md:max-h-screen h-auto md:h-full md:overflow-visible flex flex-col gap-4">
+        <div className="w-full md:w-5/12 sm:max-h-[75vh] md:max-h-screen h-auto md:h-full md:overflow-visible flex flex-col gap-4">
           <div className="flex items-center gap-2 md:pt-4">
             <h1 className="text-xl logo text-red-500">{puzzle.title}</h1>
             <span className="hidden lg:block text-md text-gray-200">
@@ -197,7 +197,7 @@ export default function SolvePuzzle() {
               </span>
             </div>
             <div
-              className={`text-gray-100 ${Object.entries(puzzle.solutions_by_languages).length ? "h-[25.75rem]" : ""} ${enableSolutions ? "" : "blur-sm"} px-4 pt-4 text-sm whitespace-pre-wrap overflow-auto`}
+              className={`text-gray-100 ${Object.entries(puzzle.solutions_by_languages).length ? "max-h-64 md:min-h-[25.75rem]" : ""} ${enableSolutions ? "" : "blur-sm"} px-4 pt-4 text-sm whitespace-pre-wrap overflow-auto`}
             >
               {Object.entries(puzzle.solutions_by_languages)
                 .reverse()
@@ -266,7 +266,7 @@ export default function SolvePuzzle() {
           </div>
         </div>
         <div className="flex-1 w-full min-h-96 h-auto md:h-[calc(100vh-164px)]">
-          <div className="max-h-[75vh] md:max-h-screen h-auto md:h-full rounded-lg bg-gradient-to-l from-[#CF4B32] to-gray-800 p-1">
+          <div className="md:max-h-screen h-auto md:h-full rounded-lg bg-gradient-to-l from-[#CF4B32] to-gray-800 p-1">
             <Form
               method="post"
               id="solution-form"

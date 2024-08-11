@@ -85,10 +85,10 @@ export default function UserLayout() {
             <div className="flex items-center justify-center gap-1 text-red-500">
               <FontAwesomeIcon
                 icon={faVial}
-                className="hidden md:block rounded-md border-2 border-red-500 text-red-500 p-1 text-xs"
+                className="md:block rounded-md border-2 border-red-500 text-red-500 p-1 text-xs"
               />
               <span className="logo text-2xl text-red-500">solvent</span>
-              <span className="pl-1 pt-1 logo text-lg text-gray-200">
+              <span className="hidden md:block pl-1 pt-1 logo text-lg text-gray-200">
                 powered by Judge0
               </span>
             </div>

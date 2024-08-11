@@ -125,17 +125,18 @@ export default function Puzzles() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div
-                role="button"
-                className="h-full flex flex-col justify-center gap-2 p-4 rounded-lg bg-gray-900 w-full shadow-sm"
-              >
+              <div className="h-full flex flex-col justify-center gap-2 p-4 rounded-lg bg-gray-900 w-full shadow-sm">
                 <span className="text-lg text-blue-500 logo">
-                  Learn better by building?
+                  Judge0 - Where code happens.
                 </span>
-                <span className="text-gray-100 text-sm">
-                  Check out the{" "}
-                  <span className="font-bold">Build Your Own X</span> repo.
-                </span>
+                <p className="text-gray-100 text-sm">
+                  Judge0 is a robust, scalable, and open-source online code
+                  execution system that can be used to build a wide range of
+                  applications that need online code execution features.{" "}
+                </p>
+                <p className="text-gray-100 text-sm">
+                  It's the system that powers this app. Click to learn more.
+                </p>
               </div>
             </a>
           </div>
