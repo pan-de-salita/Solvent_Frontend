@@ -18,8 +18,8 @@ export default function Social() {
   return (
     <>
       <div className="md:min-h-[29rem] px-4 md:px-0 w-full mx-auto flex justify-center text-gray-100">
-        <div className="bg-gray-400 rounded-lg md:mx-4 p-4 w-full max-w-5xl flex shadow-sm">
-          <div className="min-w-[10rem] hidden md:flex flex-col gap-2">
+        <div className="bg-gray-400 rounded-lg md:mx-4 p-4 w-full max-w-5xl flex flex-col gap-4 md:flex-row md:gap-0 shadow-sm">
+          <div className="min-w-[10rem] flex flex-row md:flex-col gap-2 md:gap-4">
             <div
               role="button"
               className={`btn btn-primary btn-sm text-sm ${showFollowing ? "pointer-events-none cursor-default" : "btn-outline"}`}

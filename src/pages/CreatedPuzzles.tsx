@@ -40,7 +40,7 @@ export default function CreatedPuzzles() {
   return (
     <>
       <div className="md:min-h-[29rem] px-4 md:px-0 w-full mx-auto flex justify-center text-gray-100">
-        <div className="bg-gray-400 rounded-lg md:mx-4 p-4 w-full max-w-5xl flex shadow-sm">
+        <div className="bg-gray-400 rounded-lg md:mx-4 p-4 w-full max-w-5xl flex flex-col gap-4 md:flex-row md:gap-0 shadow-sm">
           <div className="min-w-[10rem] hidden md:flex flex-col gap-1">
             <h2 className="text-lg logo">Quick facts</h2>
             <span className="text-sm">
@@ -66,7 +66,7 @@ export default function CreatedPuzzles() {
                 }, 0)}
             </span>
           </div>
-          <div className="divider divider-horizontal"></div>
+          <div className="divider p-0 m-0 md:divider-horizontal"></div>
           <div className="w-full flex flex-col gap-6">
             {puzzData.length === 0 && (
               <span className="text-gray-100 text-sm">No data to show.</span>
@@ -86,7 +86,7 @@ export default function CreatedPuzzles() {
                     </span>
                   </div>
                   <div className="flex flex-col lg:flex-row">
-                    <div className="lg:min-w-[40rem] flex flex-col items-start gap-4 pb-4">
+                    <div className="flex-1 flex flex-col items-start gap-4 pb-4">
                       <span className="text-gray-100 text-sm whitespace-pre-wrap">
                         {puzz.description}
                       </span>
@@ -101,7 +101,7 @@ export default function CreatedPuzzles() {
                       </label>
                     </div>
                     <div className="divider divider-horizontal ml-1 mr-2"></div>
-                    <div className="lg:min-w-26 flex flex-col gap-2 min-w-[8rem]">
+                    <div className="lg:min-w-26 flex flex-col gap-2 min-w-[8rem] lg:max-w-[8rem]">
                       <div className="lg:min-w-26 flex justify-start flex-wrap gap-1">
                         {Object.entries(puzz.solutions_by_languages).map(
                           ([language, solutions]) => {

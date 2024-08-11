@@ -125,13 +125,13 @@ const { router } = typesafeBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <div className="bg-gray-500 min-h-screen flex flex-col justify-between">
+  <div className="bg-gray-500 min-h-screen flex flex-col justify-between overflow-x-hidden">
     <React.StrictMode>
       <RouterProvider router={router} />
     </React.StrictMode>
     <footer className="footer footer-center bg-gray-500 p-4">
       <aside>
-        <p className="logo text-sm overflow-hidden">
+        <p className="logo text-sm">
           Copyleft 🄯 {new Date().getFullYear()} - No rights reserved by Solvent
         </p>
       </aside>

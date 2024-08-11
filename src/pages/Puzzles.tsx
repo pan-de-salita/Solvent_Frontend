@@ -207,7 +207,7 @@ export default function Puzzles() {
                           </p>
                         </div>
                         <div className="divider divider-horizontal ml-1 mr-4"></div>
-                        <div className="flex flex-col gap-2 min-w-[8rem] md:max-w-[8rem]">
+                        <div className="flex flex-col gap-2 min-w-[8rem] lg:max-w-[8rem]">
                           <div className="flex justify-start flex-wrap gap-1">
                             {Object.entries(puzz.solutions_by_languages).map(
                               ([language, solutions]) => {
