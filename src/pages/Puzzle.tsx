@@ -197,7 +197,7 @@ export default function SolvePuzzle() {
               </span>
             </div>
             <div
-              className={`text-gray-100 ${Object.entries(puzzle.solutions_by_languages).length ? "sm:max-h-64 md:min-h-[25.75rem]" : ""} ${enableSolutions ? "" : "blur-sm"} px-4 pt-4 text-sm whitespace-pre-wrap overflow-auto`}
+              className={`text-gray-100 ${Object.entries(puzzle.solutions_by_languages).length ? "max-h-64 md:min-h-[25.75rem]" : ""} ${enableSolutions ? "" : "blur-sm"} px-4 pt-4 text-sm whitespace-pre-wrap overflow-auto`}
             >
               {Object.entries(puzzle.solutions_by_languages)
                 .reverse()
