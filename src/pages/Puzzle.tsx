@@ -242,7 +242,7 @@ export default function SolvePuzzle() {
                               </span>
                             </div>
                             <span className="text-sm">{language}:</span>
-                            <code className="select-none text-xs whitespace-pre-wrap bg-gray-800 p-2 rounded-lg overflow-x-auto">
+                            <code className="select-none text-xs whitespace-pre bg-gray-800 p-2 rounded-lg overflow-x-auto">
                               {solution.source_code}
                             </code>
                             <div className="flex items-center gap-2">

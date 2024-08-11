@@ -78,7 +78,7 @@ export default function CompletedSolutions() {
                           <span className="text-sm">
                             {language?.name ?? "Unknown Language"}:
                           </span>
-                          <code className="text-xs whitespace-pre-wrap bg-gray-800 p-2 rounded-lg overflow-x-auto">
+                          <code className="text-xs whitespace-pre bg-gray-800 p-2 rounded-lg overflow-x-auto">
                             {solution.source_code}
                           </code>
                           <span className="text-sm text-gray-200 pb-3">
