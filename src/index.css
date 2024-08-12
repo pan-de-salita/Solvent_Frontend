@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 * {
-  font-family: "Inter", sans-serif;
+  /* font-family: "Inter", sans-serif; */
+  font-family: "Kanit", sans-serif;
   font-optical-sizing: auto;
 }
 

@@ -9,6 +9,12 @@ import { Puzzle } from "../types/puzzle";
 import { useEffect, useState } from "react";
 import { blo } from "blo";
 import { User } from "../types/user";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCircleCheck,
+  faCode,
+  faUserPen,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface Language {
   id: number;
@@ -154,6 +160,7 @@ export default function SolvePuzzle() {
     langData: Language[];
   };
   const [enableSolutions, setEnableSolutions] = useState(false);
+  const [dataToDisplay, setDataToDisplay] = useState("Instructions");
 
   useEffect(() => {
     if (solvedPuzzles.some((solvedPuzzle) => solvedPuzzle.id === puzzle.id)) {
@@ -164,81 +171,110 @@ export default function SolvePuzzle() {
   }, [solvedPuzzles, puzzle.id]);
 
   return (
-    <div className="overflow-clip w-full h-full p-4 lg:px-9 flex flex-col md:flex-row md:justify-between">
+    <div className="overflow-clip w-full h-full pt-4 px-4 lg:px-9 flex flex-col md:flex-row md:justify-between">
       <div className="flex flex-col md:flex-row min-h-96 h-auto md:h-[calc(100vh-164px)] w-full gap-4">
         <div className="w-full md:w-5/12 sm:max-h-[75vh] md:max-h-screen h-auto md:h-full md:overflow-visible flex flex-col gap-4">
-          <div className="flex items-center gap-2 md:pt-4">
+          <div className="flex flex-col gap-1">
             <h1 className="text-xl logo text-red-500">{puzzle.title}</h1>
-            <span className="hidden lg:block text-md text-gray-200">
-              by {puzzle.creator.username}
-            </span>
-          </div>
-          <div className="bg-gray-400 h-full rounded-lg shadow-sm">
-            <div className="bg-gray-800 h-8 rounded-t-lg flex items-center px-4">
-              <span className="text-gray-100 text-sm font-bold">
-                Instructions
-              </span>
+            <div className="flex gap-4">
+              <div className="flex items-center gap-1">
+                <FontAwesomeIcon
+                  icon={faUserPen}
+                  className="text-sm text-gray-200"
+                />
+                <span className="lg:block text-sm text-gray-200">
+                  {" "}
+                  {puzzle.creator.username}
+                </span>
+              </div>
+              <div className="flex items-center gap-1">
+                <FontAwesomeIcon
+                  icon={faCircleCheck}
+                  className="text-sm text-gray-200"
+                />
+                <span className="lg:block text-sm text-gray-200">
+                  {" "}
+                  {puzzle.solvers.length}
+                </span>
+              </div>
+              <div className="flex items-center gap-1">
+                <FontAwesomeIcon
+                  icon={faCode}
+                  className="text-sm text-gray-200"
+                />
+                <span className="lg:block text-sm text-gray-200">
+                  {" "}
+                  {Object.keys(puzzle.solutions_by_languages).length}
+                </span>
+              </div>
             </div>
-            <p className="text-gray-100 max-h-[22.75rem] p-4 text-sm whitespace-pre-wrap overflow-auto">
-              {puzzle.description}
-            </p>
           </div>
-          <div className="w-full relative bg-gray-400 h-full rounded-lg shadow-sm ">
-            <div className="bg-gray-800 h-8 rounded-t-lg flex items-center px-4 w-full gap-2">
-              <span
-                className={`${enableSolutions || data.current_user.solved_puzzles.some((puzz) => puzz.id === puzzle.id) ? "text-gray-100" : "text-red-500"} text-sm font-bold`}
+          <ul className="flex items-center gap-1 bg-trasparent py-2 overflow-y-hidden overflow-x-auto text-sm logo">
+            <li>
+              <button
+                className={`rounded-lg ${dataToDisplay === "Instructions" ? "bg-gray-400" : ""} px-3 py-2 whitespace-nowrap logo text-gray-100`}
+                onClick={() => setDataToDisplay("Instructions")}
               >
-                {enableSolutions ||
-                data.current_user.solved_puzzles.some(
-                  (puzz) => puzz.id === puzzle.id,
-                )
-                  ? "Solutions"
-                  : "Solve the puzzle to unlock others' solutions"}
-              </span>
-            </div>
-            <div
-              className={`text-gray-100 ${Object.entries(puzzle.solutions_by_languages).length ? "sm:max-h-64 md:max-h-[21.5rem] lg:max-h-[22.95rem]" : ""} ${enableSolutions ? "" : "blur-sm"} px-4 pt-4 text-sm whitespace-pre-wrap overflow-auto`}
-            >
-              {Object.entries(puzzle.solutions_by_languages)
+                Instructions
+              </button>
+            </li>
+            <li>
+              <button
+                className={`rounded-lg ${data.current_user.solved_puzzles.map((puzz) => puzz.id).includes(puzzle.id) ? "" : "hidden"} ${dataToDisplay === "Own Solutions" ? "bg-gray-400" : ""} px-3 py-2 whitespace-nowrap logo text-gray-100`}
+                onClick={() => setDataToDisplay("Own Solutions")}
+              >
+                Own Solutions
+              </button>
+            </li>
+            <li>
+              <button
+                className={`rounded-lg ${enableSolutions && puzzle.solvers.filter((solver) => solver.id !== data.current_user.id).length > 1 ? "" : "hidden"} ${dataToDisplay === "Others' Solutions" ? "bg-gray-400" : ""} px-3 py-2 whitespace-nowrap logo text-gray-100`}
+                onClick={() => setDataToDisplay("Others' Solutions")}
+                disabled={!enableSolutions}
+              >
+                Others' Solutions
+              </button>
+            </li>
+          </ul>
+          <div className="p-4 bg-gray-400 max-h-[24rem] min-h-[24rem] md:max-h-full md:h-full rounded-lg shadow-sm whitespace-pre-wrap overflow-auto flex flex-col">
+            {dataToDisplay === "Instructions" ? (
+              <p className="text-gray-100 text-md h-full">
+                {puzzle.description}
+              </p>
+            ) : dataToDisplay === "Others' Solutions" ? (
+              Object.entries(puzzle.solutions_by_languages)
                 .reverse()
-                .map(([language, solutions]) => {
-                  return (
-                    <div className="flex flex-col gap-4" key={language}>
-                      {solutions.map((solution) => {
+                .map(([language, solutions]) => (
+                  <div className="flex flex-col gap-4" key={language}>
+                    {solutions
+                      .filter(
+                        (solution) => solution.user_id !== data.current_user.id,
+                      )
+                      .map((solution) => {
+                        const solver = puzzle.solvers.find(
+                          (solver) => solution.user_id === solver.id,
+                        );
+                        const userId = solver?.id;
+                        const isCurrentUser = userId === data.current_user.id;
+
                         return (
                           <Link
-                            to={`${
-                              puzzle.solvers.find(
-                                (solver) => solution.user_id === solver.id,
-                              )?.id === data.current_user.id
-                                ? "/dashboard/"
-                                : `/users/${
-                                    puzzle.solvers.find(
-                                      (solver) =>
-                                        solution.user_id === solver.id,
-                                    )?.id
-                                  }`
-                            }`}
+                            to={
+                              isCurrentUser ? "/dashboard/" : `/users/${userId}`
+                            }
                             className={`flex flex-col gap-2 ${enableSolutions ? "" : "pointer-events-none"}`}
                             key={solution.id}
                           >
                             <div className="flex items-center gap-2 pb-2">
                               <img
-                                src={blo(
-                                  puzzle.solvers.find(
-                                    (solver) => solution.user_id === solver.id,
-                                  )?.username as `0x${string}`,
-                                )}
+                                src={blo(solver?.username as `0x${string}`)}
                                 className="w-8 h-8 rounded-full"
                                 role="button"
                                 tabIndex={0}
+                                alt={`${solver?.username}'s avatar`} // Add alt text for accessibility
                               />
                               <span className="text-lg logo">
-                                {
-                                  puzzle.solvers.find(
-                                    (solver) => solution.user_id === solver.id,
-                                  )?.username
-                                }
+                                {solver?.username}
                               </span>
                             </div>
                             <span className="text-sm text-gray-100">
@@ -261,14 +297,90 @@ export default function SolvePuzzle() {
                           </Link>
                         );
                       })}
-                    </div>
-                  );
-                })}
-            </div>
+                  </div>
+                ))
+            ) : dataToDisplay === "Own Solutions" ? (
+              Object.entries(puzzle.solutions_by_languages)
+                .reverse()
+                .map(([language, solutions]) => (
+                  <div className="flex flex-col gap-4" key={language}>
+                    {solutions
+                      .filter(
+                        (solution) => solution.user_id === data.current_user.id,
+                      )
+                      .map((solution) => {
+                        const solver = puzzle.solvers.find(
+                          (solver) => solution.user_id === solver.id,
+                        );
+                        const userId = solver?.id;
+                        const isCurrentUser = userId === data.current_user.id;
+
+                        return (
+                          <Link
+                            to={
+                              isCurrentUser ? "/dashboard/" : `/users/${userId}`
+                            }
+                            className={`flex flex-col gap-2 ${enableSolutions ? "" : "pointer-events-none"}`}
+                            key={solution.id}
+                          >
+                            <div className="flex items-center gap-2 pb-2">
+                              <img
+                                src={blo(solver?.username as `0x${string}`)}
+                                className="w-8 h-8 rounded-full"
+                                role="button"
+                                tabIndex={0}
+                                alt={`${solver?.username}'s avatar`} // Add alt text for accessibility
+                              />
+                              <span className="text-lg logo">
+                                {solver?.username}
+                              </span>
+                            </div>
+                            <span className="text-sm text-gray-100">
+                              {language}:
+                            </span>
+                            <code className="select-none text-xs whitespace-pre-wrap bg-gray-800 p-2 rounded-lg overflow-x-auto">
+                              {solution.source_code}
+                            </code>
+                            <div className="flex items-center gap-2">
+                              <span className="text-sm text-gray-200">
+                                {new Date(
+                                  solution.created_at,
+                                ).toLocaleDateString("en-US", {
+                                  year: "numeric",
+                                  month: "short",
+                                })}
+                              </span>
+                            </div>
+                            <div className="divider"></div>
+                          </Link>
+                        );
+                      })}
+                  </div>
+                ))
+            ) : null}
           </div>
+          <a
+            href="https://judge0.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="h-full flex flex-col justify-center gap-2 p-4 rounded-lg bg-gray-900 w-full shadow-sm">
+              <span className="text-lg text-blue-500 logo">
+                Judge0 - Where code happens.
+              </span>
+              <p className="text-gray-100 text-sm">
+                Judge0 is a robust, scalable, and open-source online code
+                execution system that can be used to build a wide range of
+                applications that need online code execution features.{" "}
+              </p>
+              <p className="text-gray-100 text-sm">
+                It's the system that powers this app. Click to learn more.
+              </p>
+            </div>
+          </a>
         </div>
         <div className="flex-1 w-full min-h-96 h-auto md:h-[calc(100vh-164px)]">
-          <div className="md:max-h-screen h-auto md:h-full rounded-lg bg-gradient-to-r from-[#CF4B32] to-gray-800 p-1">
+          <div className="md:max-h-screen h-auto md:h-full rounded-lg bg-gradient-to-l from-[#CF4B32] to-gray-800 p-1">
             <Form
               method="post"
               id="solution-form"

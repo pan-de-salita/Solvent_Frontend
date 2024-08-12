@@ -196,7 +196,6 @@ export default function Puzzles() {
                 return (
                   <Link to={`/puzzles/${puzz.id}`} key={puzz.id}>
                     {" "}
-                    {/* Key added here */}
                     <div className="flex flex-col gap-4 bg-gray-400 p-4 rounded-lg shadow-sm hover:bg-gradient-to-r from-gray-900 to-[#161C2A]">
                       <div>
                         <span className="text-lg text-red-500 logo">
@@ -206,8 +205,8 @@ export default function Puzzles() {
                           by {puzz.creator.username}
                         </span>
                       </div>
-                      <div className="flex flex-col lg:flex-row">
-                        <div className="flex-1 flex flex-col items-start gap-4 pb-4">
+                      <div className="flex flex-col lg:flex-row gap-4 md:gap-0">
+                        <div className="flex-1 flex flex-col items-start gap-4 pb-4 max-h-[12rem] overflow-x-hidden overflow-y-auto">
                           <p className="text-gray-100 text-sm whitespace-pre-wrap">
                             {puzz.description}
                           </p>
