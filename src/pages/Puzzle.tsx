@@ -228,7 +228,7 @@ export default function SolvePuzzle() {
             </li>
             <li>
               <button
-                className={`rounded-lg ${enableSolutions && puzzle.solvers.filter((solver) => solver.id !== data.current_user.id).length > 1 ? "" : "hidden"} ${dataToDisplay === "Others' Solutions" ? "bg-gray-400" : ""} px-3 py-2 whitespace-nowrap logo text-gray-100`}
+                className={`rounded-lg ${enableSolutions && puzzle.solvers.filter((solver) => solver.id !== data.current_user.id).length >= 1 ? "" : "hidden"} ${dataToDisplay === "Others' Solutions" ? "bg-gray-400" : ""} px-3 py-2 whitespace-nowrap logo text-gray-100`}
                 onClick={() => setDataToDisplay("Others' Solutions")}
                 disabled={!enableSolutions}
               >
