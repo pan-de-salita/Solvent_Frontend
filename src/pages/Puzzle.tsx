@@ -371,19 +371,21 @@ export default function SolvePuzzle() {
             href="https://judge0.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden lg:block"
+            className="hidden md:block"
           >
             <div className="flex h-full flex-col justify-center gap-2 p-4 rounded-lg bg-gray-900 w-full shadow-sm">
               <span className="text-lg text-blue-500 logo">
                 Judge0 - Where code happens.
               </span>
-              <p className="text-gray-100 text-sm">
+              <p className="hidden lg:block text-gray-100 text-sm">
                 Judge0 is a robust, scalable, and open-source online code
                 execution system that can be used to build a wide range of
-                applications that need online code execution features.{" "}
-              </p>
-              <p className="text-gray-100 text-sm">
+                applications that need online code execution features. <br />
                 It's the system that powers this app. Click to learn more.
+              </p>
+              <p className="lg:hidden text-gray-100 text-sm">
+                Judge0 is the online code execution system that powers this app.
+                Click to learn more.
               </p>
             </div>
           </a>
