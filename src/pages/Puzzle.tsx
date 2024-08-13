@@ -128,7 +128,9 @@ async function createSolution(
     if (response.ok) {
       toastSuccess("Puzzle solved!");
     } else {
-      toastError("Incorrect. Try again.");
+      toastError(
+        "Incorrect. Try again. Don't forget to log your output on the last line.",
+      );
     }
 
     return response;
