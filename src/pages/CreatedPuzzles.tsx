@@ -1,4 +1,4 @@
-import { redirect } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import { useLoaderData } from "react-router-typesafe";
 import { Puzzle } from "../types/puzzle";
 
@@ -75,9 +75,12 @@ export default function CreatedPuzzles() {
               return (
                 <div className="flex flex-col gap-4" key={puzz.id}>
                   <div>
-                    <span className="text-lg text-red-500 logo">
+                    <Link
+                      to={`/puzzles/${puzz.id}`}
+                      className="text-lg text-red-500 logo hover:text-primary"
+                    >
                       {puzz.title}
-                    </span>{" "}
+                    </Link>{" "}
                     <span className="text-sm text-gray-200 pb-4">
                       {new Date(puzz.created_at).toLocaleDateString("en-US", {
                         year: "numeric",

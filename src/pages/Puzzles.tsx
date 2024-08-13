@@ -121,21 +121,21 @@ export default function Puzzles() {
               />
             </Form>
             <a
-              href="https://judge0.com/"
+              href="https://github.com/codecrafters-io/build-your-own-x"
               target="_blank"
               rel="noopener noreferrer"
             >
               <div className="h-full flex flex-col justify-center gap-2 p-4 rounded-lg bg-gray-900 w-full shadow-sm">
                 <span className="text-lg text-blue-500 logo">
-                  Judge0 - Where code happens.
+                  Learn better by building?
                 </span>
                 <p className="text-gray-100 text-sm">
-                  Judge0 is a robust, scalable, and open-source online code
-                  execution system that can be used to build a wide range of
-                  applications that need online code execution features.{" "}
-                </p>
-                <p className="text-gray-100 text-sm">
-                  It's the system that powers this app. Click to learn more.
+                  Check out{" "}
+                  <span className="text-gray-100 font-bold">
+                    Build Your Own X
+                  </span>
+                  , a compilation of well-written, step-by-step guides for
+                  re-creating our favorite technologies from scratch.
                 </p>
               </div>
             </a>
@@ -181,7 +181,7 @@ export default function Puzzles() {
                   <div className="flex justify-end">
                     <button
                       type="submit"
-                      className="btn-md md:btn-sm btn btn-outline btn-warning"
+                      className="btn-sm btn btn-outline btn-warning"
                     >
                       Submit
                     </button>
@@ -205,7 +205,7 @@ export default function Puzzles() {
                           by {puzz.creator.username}
                         </span>
                       </div>
-                      <div className="flex flex-col lg:flex-row gap-4 md:gap-0">
+                      <div className="flex flex-col lg:flex-row gap-2">
                         <div className="flex-1 flex flex-col items-start gap-4 pb-4 max-h-[12rem] overflow-x-hidden overflow-y-auto">
                           <p className="text-gray-100 text-sm whitespace-pre-wrap">
                             {puzz.description}

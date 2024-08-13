@@ -364,7 +364,7 @@ export default function SolvePuzzle() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="h-full flex flex-col justify-center gap-2 p-4 rounded-lg bg-gray-900 w-full shadow-sm">
+            <div className="hidden md:flex h-full flex-col justify-center gap-2 p-4 rounded-lg bg-gray-900 w-full shadow-sm">
               <span className="text-lg text-blue-500 logo">
                 Judge0 - Where code happens.
               </span>
@@ -408,7 +408,7 @@ export default function SolvePuzzle() {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="btn-md md:btn-sm btn btn-error btn-outline"
+                  className="btn-sm btn btn-error btn-outline"
                 >
                   Submit
                 </button>
