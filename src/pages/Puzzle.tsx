@@ -244,7 +244,7 @@ export default function SolvePuzzle() {
               </button>
             </li>
           </ul>
-          <div className="p-4 bg-gray-400 max-h-[24rem] min-h-[24rem] md:max-h-full md:h-full rounded-lg shadow-sm whitespace-pre-wrap overflow-auto flex flex-col">
+          <div className="p-4 bg-gray-400 max-h-[24rem] md:max-h-full md:h-full rounded-lg shadow-sm whitespace-pre-wrap overflow-auto flex flex-col">
             {dataToDisplay === "Instructions" ? (
               <p className="text-gray-100 text-md h-full">
                 {puzzle.description}
@@ -371,8 +371,9 @@ export default function SolvePuzzle() {
             href="https://judge0.com/"
             target="_blank"
             rel="noopener noreferrer"
+            className="hidden lg:block"
           >
-            <div className="hidden md:flex h-full flex-col justify-center gap-2 p-4 rounded-lg bg-gray-900 w-full shadow-sm">
+            <div className="flex h-full flex-col justify-center gap-2 p-4 rounded-lg bg-gray-900 w-full shadow-sm">
               <span className="text-lg text-blue-500 logo">
                 Judge0 - Where code happens.
               </span>
