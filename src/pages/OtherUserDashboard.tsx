@@ -10,6 +10,7 @@ import { OtherUser, User } from "../types/user";
 import { blo } from "blo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDna } from "@fortawesome/free-solid-svg-icons";
+import { toastSuccess } from "../utils/toasts";
 
 async function getUser(userId: number, authToken: string) {
   try {
@@ -51,7 +52,6 @@ async function destroyRelationship(
   relationshipToDestroy: { relationship_id: number },
   authToken: string,
 ) {
-  console.log(relationshipToDestroy);
   try {
     const response = await fetch(
       `https://solvent-nfkw.onrender.com/api/v1/relationships/${relationshipToDestroy.relationship_id}`,
@@ -64,7 +64,10 @@ async function destroyRelationship(
       },
     );
 
-    console.log(response);
+    if (response.ok) {
+      toastSuccess("User unfollowed!");
+    }
+
     return response;
   } catch (error) {
     return error as Error;
@@ -90,9 +93,11 @@ async function createRelationship(
       },
     );
 
-    console.log(response);
+    if (response.ok) {
+      toastSuccess("User followed!");
+    }
+
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     return error as Error;

@@ -6,6 +6,7 @@ import {
   useNavigation,
 } from "react-router-dom";
 import { Puzzle } from "../types/puzzle";
+import { toastError, toastSuccess } from "../utils/toasts";
 
 async function getAllPuzzes(q: string | null) {
   try {
@@ -67,6 +68,13 @@ async function createPuzzle(
         },
       },
     );
+
+    if (response.ok) {
+      toastSuccess("Puzzle created!");
+    } else {
+      const data = await response.json();
+      toastError(`${data.status.message}.`);
+    }
 
     return response;
   } catch (error) {

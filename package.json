@@ -25,7 +25,8 @@
     "react-router-dom": "^6.26.0",
     "react-router-typesafe": "^1.5.0",
     "react-select": "^5.8.0",
-    "react-spinners": "^0.14.1"
+    "react-spinners": "^0.14.1",
+    "react-toastify": "^10.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

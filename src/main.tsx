@@ -30,6 +30,7 @@ import OtherUserDashboard, {
   action as otherUserAction,
 } from "./pages/OtherUserDashboard";
 import OtherUserStats from "./pages/OtherUserStats";
+import { ToastContainer } from "react-toastify";
 
 const { router } = typesafeBrowserRouter([
   {
@@ -125,16 +126,18 @@ const { router } = typesafeBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <div className="bg-gray-500 min-h-screen flex flex-col justify-between overflow-x-hidden">
-    <React.StrictMode>
+  <React.StrictMode>
+    <div className="bg-gray-500 min-h-screen flex flex-col justify-between overflow-x-hidden">
       <RouterProvider router={router} />
-    </React.StrictMode>
-    <footer className="footer footer-center bg-gray-500 p-4">
-      <aside>
-        <p className="logo text-sm text-gray-200">
-          Copyleft 🄯 {new Date().getFullYear()} - No rights reserved by Solvent
-        </p>
-      </aside>
-    </footer>
-  </div>,
+      <footer className="footer footer-center bg-gray-500 p-4">
+        <aside>
+          <p className="logo text-sm text-gray-200">
+            Copyleft 🄯 {new Date().getFullYear()} - No rights reserved by
+            Solvent
+          </p>
+        </aside>
+      </footer>
+    </div>
+    <ToastContainer />
+  </React.StrictMode>,
 );

@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVial, faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import { RiseLoader } from "react-spinners";
 import { useAuth } from "../contexts/AuthContext";
+import { toastError, toastSuccess } from "../utils/toasts";
 
 async function login(credentials: { email: string; password: string }) {
   try {
@@ -24,12 +25,15 @@ async function login(credentials: { email: string; password: string }) {
     );
 
     if (!response.ok) {
+      toastError("Error: Invalid login credentials.");
       return redirect("/");
     }
 
     const authToken = response.headers.get("Authorization");
     if (authToken) {
       localStorage.setItem("Authorization", JSON.stringify(authToken));
+      const data = await response.json();
+      toastSuccess(`Welcome back, ${data.data.current_user.username}`);
       return redirect("/dashboard/");
     }
   } catch (error) {

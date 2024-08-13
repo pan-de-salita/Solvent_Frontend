@@ -15,6 +15,7 @@ import {
   faCode,
   faUserPen,
 } from "@fortawesome/free-solid-svg-icons";
+import { toastError, toastSuccess } from "../utils/toasts";
 
 interface Language {
   id: number;
@@ -124,7 +125,12 @@ async function createSolution(
       },
     );
 
-    console.log(response);
+    if (response.ok) {
+      toastSuccess("Puzzle solved!");
+    } else {
+      toastError("Incorrect. Try again.");
+    }
+
     return response;
   } catch (error) {
     return error as Error;
